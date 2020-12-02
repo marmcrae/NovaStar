@@ -11,7 +11,7 @@ public class PlayerLerp : MonoBehaviour
 
     #region Targeting
     [SerializeField]
-    private float _posSpeed, _rotSpeed;
+    private float _posSpeed, _rotSpeed;  //set in inspector or hardcode in 10, 5 seem to work well respectively
     [SerializeField]
     private GameObject _posTarget, _rotTarget;
     #endregion

@@ -11,7 +11,7 @@ public class PlayerPosition : MonoBehaviour
 
     #region Player Movement Parameters
     [SerializeField]
-    private float _speed;
+    private float _speed;  //set in inspector, 20 worked well.
     private Quaternion _resetRot;
     private float _accelerate;
     #endregion
@@ -24,7 +24,6 @@ public class PlayerPosition : MonoBehaviour
         transform.position = _player.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CalculateMovement();
