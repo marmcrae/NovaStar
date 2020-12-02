@@ -16,35 +16,32 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private float _speed = 3.0f;
     [SerializeField] private Transform _pointA;
     [SerializeField] private Transform _pointB;
-    private Transform _curTarget;
+    [SerializeField] private Transform _curTarget;
+    private int _startDirection;
     private int _randDirection;
-
+    private bool _newDirection;
     //basic movement
     //basic fire
 
     // Start is called before the first frame update
     void Start()
     {
-        _randDirection = Random.Range(0, 2);
+        _startDirection = Random.Range(0, 2);
+        //Sets Random Direction at Start
+        if (_startDirection == 0)
+        {
+            _curTarget = _pointA;
+        }
+        else if (_startDirection == 1)
+        {
+            _curTarget = _pointB;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SecondPhaseAbility();
-            Debug.Log("Move");
-        }
-        if (_randDirection == 0)
-        {
-            _curTarget = _pointA;
-        }
-        else if (_randDirection == 1)
-        {
-            _curTarget = _pointB;
-        }
-        StandardMovement();
+    {       
+        StandardMovement();      
     }
     private void BossEntrance()
     {
@@ -55,17 +52,49 @@ public class FinalBoss : MonoBehaviour
     {
         //Boss moves up and down on y axis randomly
         transform.position = Vector3.MoveTowards(transform.position, _curTarget.position, _speed * Time.deltaTime);
-        if (transform.position == _pointA.position)
-        {
-            _curTarget = _pointB;
-        }
-        if (transform.position == _pointB.position)
+
+        if (_curTarget == _pointA && transform.position != _pointA.position)
         {
             _curTarget = _pointA;
         }
+        else
+        {
+            _curTarget = _pointB;
+        }
+        if (_curTarget == _pointB && transform.position != _pointB.position)
+        {
+            _curTarget = _pointB;
+        }
+        else
+        {
+            _curTarget = _pointA;
+        }
+        if (_newDirection == false)
+        {
+            _newDirection = true;
+            StartCoroutine(RandomDirection());
+        }
+    }
+    IEnumerator RandomDirection()
+    {   
+        //Controls enemy direction towards point a or point b
+        yield return new WaitForSeconds(Random.Range(1.5f, 4.0f));
+        _randDirection = Random.Range(0, 2);
+        Debug.Log("Coroutine " + _randDirection);
+        if (_randDirection == 0)
+        {
+            _curTarget = _pointA;
+        }
+        if (_randDirection == 1)
+        {
+            _curTarget = _pointB;
+        }
+        _newDirection = false;
     }
     private void SecondPhaseAbility()
     {
+        //can just move to point b 
+        //need to disable standard movement until after this ability finishes
         _pointB.position = new Vector3(transform.position.x, 15.0f, 0);
         if (Vector3.Distance(transform.position, _pointB.position) > 1.0f)
         {
