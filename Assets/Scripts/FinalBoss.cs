@@ -11,10 +11,13 @@ public class FinalBoss : MonoBehaviour
     //Boss goes to top of the screen, slows down and activates a downward beam while moving backwards
     //hp
     [SerializeField] private int _hp = 100;
+
+    //movement
     [SerializeField] private float _speed = 3.0f;
     [SerializeField] private Transform _pointA;
     [SerializeField] private Transform _pointB;
     private Transform _curTarget;
+    private int _randDirection;
 
     //basic movement
     //basic fire
@@ -22,7 +25,7 @@ public class FinalBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _curTarget = _pointB;
+        _randDirection = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -32,6 +35,14 @@ public class FinalBoss : MonoBehaviour
         {
             SecondPhaseAbility();
             Debug.Log("Move");
+        }
+        if (_randDirection == 0)
+        {
+            _curTarget = _pointA;
+        }
+        else if (_randDirection == 1)
+        {
+            _curTarget = _pointB;
         }
         StandardMovement();
     }
