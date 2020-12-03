@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
-
     //1st attack pattern
     //Boss turn red and fires charged beam
-    //2nd attack pattern enables at 50% hp
-    //Boss goes to top of the screen, slows down and activates a downward beam while moving backwards
-    //hp
     [SerializeField] private int _maxHp = 100;
     [SerializeField] private int _curHp;
 
@@ -24,14 +20,17 @@ public class FinalBoss : MonoBehaviour
     private bool _newDirection;
 
     //phase 2 movement
-    [SerializeField] private Transform _p2Start;
+    [SerializeField] private Transform _pointC;
     [SerializeField] private float _p2Speed = 15.0f;
     [SerializeField] private bool _p2Active;
     private bool _activateP2;
     private bool _initialP2;
     private bool _stopHpCheck;
     private bool _startP2Move;
+    [SerializeField] private bool _p2MoveToB;
 
+    private Animator _anim;
+ 
     //basic fire
 
     // Start is called before the first frame update
@@ -39,6 +38,12 @@ public class FinalBoss : MonoBehaviour
     {
         //assigning current hp
         _curHp = _maxHp;
+
+        _anim = GetComponent<Animator>();
+        if (_anim == null)
+        {
+            Debug.LogError("No Anim");
+        }
 
         _startDirection = Random.Range(0, 2);
         //Sets Random Direction at Start
@@ -125,7 +130,7 @@ public class FinalBoss : MonoBehaviour
     IEnumerator RandomDirection()
     {   
         //Sets Random enemy direction towards point a or point b
-        yield return new WaitForSeconds(Random.Range(1.5f, 4.0f));
+        yield return new WaitForSeconds(Random.Range(2.5f, 5.0f));
         _randDirection = Random.Range(0, 2);
         if (_randDirection == 0)
         {
@@ -139,20 +144,28 @@ public class FinalBoss : MonoBehaviour
     }
     private void SecondPhaseAbility()
     {
-        //can just move to point b 
-        //need to disable standard movement until after this ability finishes
+        //charges to _p2Start and then goes back towards Point B
+        //When it reaches _pointC, turn around and fire bottom beam
         transform.position = Vector3.MoveTowards(transform.position, _curTarget.position, _p2Speed * Time.deltaTime);
         if (_startP2Move == true)
         {
-            _curTarget = _p2Start;
+            _curTarget = _pointC;
         }
-        if (transform.position == _p2Start.position)
+        //pause and rotate at point c, start beam
+        if (transform.position == _pointC.position)
         {
-            _startP2Move = false;
-            _curTarget = _pointB;
+            _anim.SetBool("Rotate", true);
+            StartCoroutine(P2MoveToB());        
+            _startP2Move = false;        
+            if (_p2MoveToB == true)
+            {
+                _curTarget = _pointB;              
+            }
         }
         if (transform.position == _pointB.position)
         {
+            _anim.SetBool("Rotate", false);
+            _p2MoveToB = false;
             _p2Active = false;
         }
     }
@@ -173,5 +186,11 @@ public class FinalBoss : MonoBehaviour
         _p2Active = true;
         _activateP2 = true;
         _startP2Move = true;
+    }
+    IEnumerator P2MoveToB ()
+    {
+        yield return new WaitForSeconds(2.5f);
+        _p2MoveToB = true;
+
     }
 }
