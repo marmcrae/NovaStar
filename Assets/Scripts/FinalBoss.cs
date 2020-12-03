@@ -15,8 +15,7 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private Transform _pointB;
     //_curTarget will set a new target throughout game
     [SerializeField] private Transform _curTarget;
-    private int _startDirection;
-    private int _randDirection;
+    [SerializeField] private int _randDirection;
     private bool _newDirection;
 
     //phase 2 movement
@@ -43,16 +42,7 @@ public class FinalBoss : MonoBehaviour
             Debug.LogError("No Anim");
         }
 
-        _startDirection = Random.Range(0, 2);
-        //Sets Random Direction at Start
-        if (_startDirection == 0)
-        {
-            _curTarget = _pointA;
-        }
-        else if (_startDirection == 1)
-        {
-            _curTarget = _pointB;
-        }
+        _randDirection = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -69,7 +59,9 @@ public class FinalBoss : MonoBehaviour
         //if second phase abil not active then standard movement
         if (_p2Active == false)
         {
+            _anim.enabled = false;
             StandardMovement();
+            Debug.Log("Move");
             if (_activateP2 == true)
             {
                 //change color, can create coroutine to start color flash to indicate charge
@@ -90,6 +82,7 @@ public class FinalBoss : MonoBehaviour
         //else stop standard movement, enable second phase movement
         else if (_p2Active == true)
         {
+            _anim.enabled = true;
             SecondPhaseAbility();
         }          
     }
@@ -103,21 +96,21 @@ public class FinalBoss : MonoBehaviour
         //Boss moves up and down on y axis randomly      
         if (_randDirection == 0 && transform.position.y <= 15.0f)
         {
-            transform.position = transform.up * _speed * Time.deltaTime;
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
         else
         {
             _randDirection = 1;
-            transform.position = transform.up * -1.0f * _speed * Time.deltaTime;
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
         }
         if (_randDirection == 1 && transform.position.y >= -15.0f)
         {
-            transform.position = transform.up * -1.0f * _speed * Time.deltaTime;
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
         }
         else
         {
             _randDirection = 0;
-            transform.position = transform.up * _speed * Time.deltaTime;
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
         if (_newDirection == false)
         {
@@ -130,28 +123,27 @@ public class FinalBoss : MonoBehaviour
         //Sets Random enemy direction towards point a or point b
         yield return new WaitForSeconds(Random.Range(2.5f, 5.0f));
         _randDirection = Random.Range(0, 2);
-        if (_randDirection == 0)
-        {
-            _curTarget = _pointA;
-
-        }
-        if (_randDirection == 1)
-        {
-            _curTarget = _pointB;
-        }
         _newDirection = false;
     }
     private void SecondPhaseAbility()
     {
         if (_startP2Move == true)
         {
+            _anim.enabled = true;
             _anim.SetBool("Charge", true);
         }
         if (transform.position.x <= -40.0f)
         {
             _anim.SetBool("Charge", false);
             _anim.SetBool("BeamRoutine", true);
-            _startP2Move = false;
+            _startP2Move = false;          
+        }
+        /*if (transform.position.x >= 50.0f && transform.rotation.y == -180.0f)
+        {
+            
+        }*/
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("0") && _startP2Move == false)
+        {
             _p2Active = false;
         }
     }
@@ -173,4 +165,5 @@ public class FinalBoss : MonoBehaviour
         _activateP2 = true;
         _startP2Move = true;
     }
+    //lerp eventually
 }
