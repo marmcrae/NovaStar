@@ -26,6 +26,14 @@ public class FinalBoss : MonoBehaviour
     private bool _stopHpCheck;
     private bool _startP2Move;
 
+    //Phase 2 Bomb routine
+    [SerializeField] private Transform _bombHolder1;
+    [SerializeField] private Transform _bombHolder2;
+    [SerializeField] private Transform _bombHolder3;
+    [SerializeField] private GameObject _bombPrefab;
+    [SerializeField] private Transform _curBombSpawn;
+    private int _randBomb;
+
     private Animator _anim;
  
     //basic fire
@@ -61,7 +69,6 @@ public class FinalBoss : MonoBehaviour
         {
             _anim.enabled = false;
             StandardMovement();
-            Debug.Log("Move");
             if (_activateP2 == true)
             {
                 //change color, can create coroutine to start color flash to indicate charge
@@ -84,7 +91,8 @@ public class FinalBoss : MonoBehaviour
         {
             _anim.enabled = true;
             SecondPhaseAbility();
-        }          
+        }
+        P2BombDrop();
     }
     private void BossEntrance()
     {
@@ -138,10 +146,6 @@ public class FinalBoss : MonoBehaviour
             _anim.SetBool("BeamRoutine", true);
             _startP2Move = false;          
         }
-        /*if (transform.position.x >= 50.0f && transform.rotation.y == -180.0f)
-        {
-            
-        }*/
         if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("0") && _startP2Move == false)
         {
             _p2Active = false;
@@ -166,4 +170,27 @@ public class FinalBoss : MonoBehaviour
         _startP2Move = true;
     }
     //lerp eventually
+    private void P2BombDrop()
+    {
+        //Only active during P2 BombRoutine
+        //ends when p2 over
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("1"))
+        {
+            Debug.Log("Beam Routine");
+            _randBomb = Random.Range(0, 3);
+            if (_randBomb == 0)
+            {
+                _curBombSpawn = _bombHolder1;
+            }
+            else if (_randBomb == 1)
+            {
+                _curBombSpawn = _bombHolder2;
+            }
+            else if (_randBomb == 2)
+            {
+                _curBombSpawn = _bombHolder3;
+            }
+            Instantiate(_bombPrefab, _curBombSpawn.position, Quaternion.identity);
+        }
+    }
 }
