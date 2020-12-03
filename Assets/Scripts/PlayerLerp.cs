@@ -16,7 +16,7 @@ public class PlayerLerp : MonoBehaviour
     private GameObject _posTarget, _rotTarget;
     #endregion
 
-    private float _accelleration;
+    private float _acceleration;
     private void Start()
     {
         _playerPos = GameObject.Find("Player_Position").GetComponent<PlayerPosition>();
@@ -40,9 +40,9 @@ public class PlayerLerp : MonoBehaviour
 
     private void CheckAcceleration()
     {
-        //Debug.Log("Accelleration is: " + _accelleration);
+        //Debug.Log("Acceleration is: " + _acceleration);
         //Sets float from horizontalInput on Player Position script to set thresholds for animation changes
-        _accelleration = _playerPos.Accelerate();
-        _anim.SetFloat("Accelleration", _accelleration);
+        _acceleration = _playerPos.Accelerate();
+        _anim.SetFloat("Acceleration", _acceleration);
     }
 }
