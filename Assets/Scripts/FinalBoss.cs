@@ -33,6 +33,8 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private Transform _curBombSpawn;
     private int _randBomb;
+    private float _bombCD;
+    private float _bombFireRate;
 
     private Animator _anim;
  
@@ -177,6 +179,7 @@ public class FinalBoss : MonoBehaviour
         if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("1"))
         {
             Debug.Log("Beam Routine");
+            //determines which bomb holder to spawn from
             _randBomb = Random.Range(0, 3);
             if (_randBomb == 0)
             {
@@ -190,7 +193,14 @@ public class FinalBoss : MonoBehaviour
             {
                 _curBombSpawn = _bombHolder3;
             }
-            Instantiate(_bombPrefab, _curBombSpawn.position, Quaternion.identity);
+
+            _bombFireRate = Random.Range(.5f, 1f);
+            if (Time.time > _bombCD)
+            {
+                _bombCD = Time.time + _bombFireRate;
+                Instantiate(_bombPrefab, _curBombSpawn.position, Quaternion.identity);
+            }
+            
         }
     }
 }
