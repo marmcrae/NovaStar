@@ -21,7 +21,6 @@ public class FinalBoss : MonoBehaviour
 
     //phase 2 movement
     [SerializeField] private Transform _pointC;
-    [SerializeField] private float _p2Speed = 15.0f;
     [SerializeField] private bool _p2Active;
     private bool _activateP2;
     private bool _initialP2;
@@ -101,24 +100,24 @@ public class FinalBoss : MonoBehaviour
     }
     private void StandardMovement()
     {
-        //Boss moves up and down on y axis randomly
-        transform.position = Vector3.MoveTowards(transform.position, _curTarget.position, _speed * Time.deltaTime);
-
-        if (_curTarget == _pointA && transform.position != _pointA.position)
+        //Boss moves up and down on y axis randomly      
+        if (_randDirection == 0 && transform.position.y <= 15.0f)
         {
-            _curTarget = _pointA;
+            transform.position = transform.up * _speed * Time.deltaTime;
         }
         else
         {
-            _curTarget = _pointB;
+            _randDirection = 1;
+            transform.position = transform.up * -1.0f * _speed * Time.deltaTime;
         }
-        if (_curTarget == _pointB && transform.position != _pointB.position)
+        if (_randDirection == 1 && transform.position.y >= -15.0f)
         {
-            _curTarget = _pointB;
+            transform.position = transform.up * -1.0f * _speed * Time.deltaTime;
         }
         else
         {
-            _curTarget = _pointA;
+            _randDirection = 0;
+            transform.position = transform.up * _speed * Time.deltaTime;
         }
         if (_newDirection == false)
         {
@@ -134,6 +133,7 @@ public class FinalBoss : MonoBehaviour
         if (_randDirection == 0)
         {
             _curTarget = _pointA;
+
         }
         if (_randDirection == 1)
         {
@@ -154,7 +154,6 @@ public class FinalBoss : MonoBehaviour
             _startP2Move = false;
             _p2Active = false;
         }
-        //need to set _p2Active to false
     }
     //Initial P2 Coroutine has a shorter wait for to start faster
     IEnumerator InitialP2()
