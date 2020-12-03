@@ -27,7 +27,6 @@ public class FinalBoss : MonoBehaviour
     private bool _initialP2;
     private bool _stopHpCheck;
     private bool _startP2Move;
-    [SerializeField] private bool _p2MoveToB;
 
     private Animator _anim;
  
@@ -144,32 +143,18 @@ public class FinalBoss : MonoBehaviour
     }
     private void SecondPhaseAbility()
     {
-        //charges to _p2Start and then goes back towards Point B
-        //When it reaches _pointC, turn around and fire bottom beam
-        transform.position = Vector3.MoveTowards(transform.position, _curTarget.position, _p2Speed * Time.deltaTime);
         if (_startP2Move == true)
         {
             _anim.SetBool("Charge", true);
-            _curTarget = _pointC;
         }
-        //pause and rotate at point c, start beam
-        if (transform.position == _pointC.position)
+        if (transform.position.x <= -40.0f)
         {
             _anim.SetBool("Charge", false);
-            _anim.SetBool("Rotate", true);
-            StartCoroutine(P2MoveToB());        
-            _startP2Move = false;        
-            if (_p2MoveToB == true)
-            {
-                _curTarget = _pointB;              
-            }
-        }
-        if (transform.position == _pointB.position)
-        {
-            _anim.SetBool("Rotate", false);
-            _p2MoveToB = false;
+            _anim.SetBool("BeamRoutine", true);
+            _startP2Move = false;
             _p2Active = false;
         }
+        //need to set _p2Active to false
     }
     //Initial P2 Coroutine has a shorter wait for to start faster
     IEnumerator InitialP2()
@@ -188,11 +173,5 @@ public class FinalBoss : MonoBehaviour
         _p2Active = true;
         _activateP2 = true;
         _startP2Move = true;
-    }
-    IEnumerator P2MoveToB ()
-    {
-        yield return new WaitForSeconds(2.5f);
-        _p2MoveToB = true;
-
     }
 }
