@@ -178,7 +178,6 @@ public class FinalBoss : MonoBehaviour
         //ends when p2 over
         if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("1"))
         {
-            Debug.Log("Beam Routine");
             //determines which bomb holder to spawn from
             _randBomb = Random.Range(0, 3);
             if (_randBomb == 0)

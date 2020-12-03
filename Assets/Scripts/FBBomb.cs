@@ -5,15 +5,17 @@ using UnityEngine;
 public class FBBomb : MonoBehaviour
 {
     private float _speed = 15.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        //add acceleration
+        transform.Translate(Vector3.down * _speed * Time.deltaTime, Space.World);
+        transform.Rotate(1, 1, 1 * Time.deltaTime);
+
+        if (transform.position.y <= -25.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
