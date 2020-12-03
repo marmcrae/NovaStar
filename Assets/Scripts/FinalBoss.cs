@@ -149,11 +149,13 @@ public class FinalBoss : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _curTarget.position, _p2Speed * Time.deltaTime);
         if (_startP2Move == true)
         {
+            _anim.SetBool("Charge", true);
             _curTarget = _pointC;
         }
         //pause and rotate at point c, start beam
         if (transform.position == _pointC.position)
         {
+            _anim.SetBool("Charge", false);
             _anim.SetBool("Rotate", true);
             StartCoroutine(P2MoveToB());        
             _startP2Move = false;        
