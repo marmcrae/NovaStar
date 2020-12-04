@@ -29,6 +29,13 @@ public class FinalBoss : MonoBehaviour
     private float _laserBombCD;
     private float _laserBombRate;
 
+    //Phase 1 Mini Laser
+    [SerializeField] private GameObject _miniLaser;
+    [SerializeField] private Transform _miniLaserSpawn1;
+    [SerializeField] private Transform _miniLaserSpawn2;
+    private float _miniLaserCD;
+    private float _miniLaserFireRate;
+
     //Phase 1 Normal Laser
     [SerializeField] private GameObject _normalLaser;
     [SerializeField] private Transform _normLaserSpawn;
@@ -103,6 +110,7 @@ public class FinalBoss : MonoBehaviour
             _anim.enabled = true;
             SecondPhaseAbility();
         }
+        P1MiniLaser();
         P1Ability();
         P1NormalLaser();
         P2BombDrop();
@@ -195,6 +203,18 @@ public class FinalBoss : MonoBehaviour
                 _laserBombCD = Time.time + _laserBombRate;
                 Instantiate(_laserBomb, _fireHolder.position, Quaternion.identity);
             }          
+        }
+    }
+    private void P1MiniLaser()
+    {
+        if (_p2Active == false)
+        {
+            _miniLaserFireRate = Random.Range(3.0f, 6.0f);
+            if (Time.time > _miniLaserCD)
+            {
+                _miniLaserCD = Time.time + _miniLaserFireRate;
+                Instantiate(_miniLaser, _miniLaserSpawn1.position, Quaternion.identity, _miniLaserSpawn1.transform);
+            }
         }
     }
     private void P1NormalLaser()
