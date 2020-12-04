@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenericMovement : MonoBehaviour
+public class EnemyGenericMovement : Enemy
 {
-    [SerializeField] private float _speed = 1.0f;
-    [SerializeField] float frequency = 1.5f; // Speed of sine movement
-    [SerializeField] float magnitude = 5f; //  Size of sine movement
+    [SerializeField] private float _speed = 6.0f;
+    [SerializeField] float frequency = 1.5f; // Speed
+    [SerializeField] float magnitude = 5f; // Size 
+
     Vector3 pos;
     Vector3 axis;
-
     private bool _isAlive = true;
 
     void Start()
@@ -19,15 +19,16 @@ public class EnemyGenericMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (_isAlive)
         {
-            CalculateMove();
+            CalculateMovement();
         }
     }
 
-    private void CalculateMove()
+    private void CalculateMovement()
     {
         pos += Vector3.left * Time.deltaTime * _speed;
         transform.position = pos + axis * Mathf.Sin(Time.time * frequency) * magnitude;

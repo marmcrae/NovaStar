@@ -8,9 +8,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject _enemyContainer;
 
     // credit to Brackeys start
-    public enum SpawnState { SPAWNING, WAITING, COUNTING }
+    private enum SpawnState { SPAWNING, WAITING, COUNTING }
 
-    // Serialized Fields
+    // Serialized Fields start 
     [System.Serializable]
     public class Wave
     {
@@ -21,10 +21,10 @@ public class SpawnManager : MonoBehaviour
     }
     public Wave[] waves;
     public Transform[] spawnPoints;
-    private int nextWave = 0;
-    //end
+    public float timeBetweenWaves = 5f;
+    //Serialized Fields end 
 
-    private float timeBetweenWaves = 5f;
+    private int nextWave = 0;
     private float waveCountdown;
     private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
