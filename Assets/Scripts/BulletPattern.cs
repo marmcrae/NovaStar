@@ -13,11 +13,15 @@ public class BulletPattern : MonoBehaviour
     private float _angleStep;
     [SerializeField]
     private float _startStep, _endStep;
+    [SerializeField]
+    private float _speed;
+    [SerializeField]
+    private float _delay;
     // Start is called before the first frame update
     void Start()
     {
         _angle = _startAngle;
-        InvokeRepeating("Fire", 0f, 1f);
+        InvokeRepeating("Fire", _delay, _speed);
     }
 
     // Update is called once per frame
@@ -45,5 +49,10 @@ public class BulletPattern : MonoBehaviour
             _angleStep = _startStep;
         }
         _angle += _angleStep;
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke("Fire");
     }
 }
