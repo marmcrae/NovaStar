@@ -10,14 +10,37 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    public GameObject _laserPrefab;
+    private GameObject _shotPrefab;
 
     // Player attack values
     //[SerializeField]
     private float _fireRate = 0.25f;
 
+    private float _laserFireRate = 4.0f;
+
     private float _canFire = -1.0f;
 
+    private float _canFireLaser = -1.0f;
+
+    private int weaponLevel;
+
+    private bool laserCharging = false;
+
+    private bool laserFiring = false;
+
+    private float chargeTime;
+
+    private float totalCharge; 
+
+    [SerializeField]
+    private GameObject _laserPrefab;
+
+    [SerializeField]
+    private Animator laserAnim;
+
+
+    [SerializeField]
+    private GameObject chargeSprite;
 
     /* Boolean that affects the tracking behavior of the homing shots.
      * ENABLED: The shots will change their trajectory mid flight to a new valid target if one is detected.
@@ -37,18 +60,97 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            FireLaser();
+            //FireShot();
+            ChargeLaser();
         }
        
     }
 
-    void FireLaser()
+    void FireShot()
     {
         _canFire = Time.time + _fireRate;
 
-        Instantiate(_laserPrefab, transform.position + new Vector3(1.05f, 0, 0), Quaternion.identity);
+        Instantiate(_shotPrefab, transform.position + new Vector3(1.05f, 0, 0), Quaternion.identity);
     }
 
+
+    void ChargeLaser()
+    {
+
+        _canFireLaser = Time.time + _laserFireRate;
+
+        Debug.Log("Start Charge");
+        laserCharging = true;
+        float startTime = Time.time;
+        //chargeSprite.SetActive(true);
+        //var newCharge = Instantiate(chargeSprite, transform);
+
+        while (laserCharging == true)
+        {
+            
+            chargeTime = Time.time - startTime;
+
+            if(chargeTime >= 3.0f || Input.GetKeyUp(KeyCode.Space))
+            {
+                Debug.Log("Fully charged");
+                laserCharging = false;
+            }
+
+        }
+        
+        if(chargeTime > 3.0f)
+        {
+            totalCharge = 3.0f;
+        }
+        else
+        {
+            totalCharge = chargeTime;
+        }
+
+        //chargeSprite.SetActive(false);
+        //Destroy(newCharge);
+        FireLaser();
+        
+    }
+
+    void FireLaser()
+    {
+        //_laserPrefab.SetActive(true);
+
+        var newCharge = Instantiate(_laserPrefab, transform);
+
+        float startTime = Time.time;
+
+        laserAnim.SetTrigger("laserStart");
+
+        laserFiring = true;
+
+
+        if (laserAnim.GetBool("laserEnd") == true)
+        {
+            laserAnim.ResetTrigger("laserEnd");
+        }
+
+        while (laserFiring)
+        {
+            chargeTime = Time.time - startTime;
+
+            if (chargeTime >= totalCharge)
+            {
+                laserFiring = false;
+            }
+        }
+
+        laserAnim.SetTrigger("laserEnd");
+
+        if (laserAnim.GetBool("laserStart") == true)
+        {
+            laserAnim.ResetTrigger("laserStart");
+        }
+
+        //_laserPrefab.SetActive(false);
+        Destroy(_laserPrefab);
+    }
 
     public void Damage()
     {
