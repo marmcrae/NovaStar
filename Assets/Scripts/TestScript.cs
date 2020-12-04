@@ -161,7 +161,7 @@ public class TestScript : MonoBehaviour
             laserAnim.ResetTrigger("laserStart");
         }
 
-        yield return new WaitForSeconds(1.0f);
+        //yield return new WaitForSeconds(1.0f);
         _laserPrefab.SetActive(false);
         //Destroy(newCharge, 1f);
         _canShoot = true;
