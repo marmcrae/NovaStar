@@ -26,6 +26,12 @@ public class FinalBoss : MonoBehaviour
     private bool _stopHpCheck;
     private bool _startP2Move;
 
+    //Phase 1 Ability
+    [SerializeField] private GameObject _laserBomb;
+    [SerializeField] private Transform _fireHolder;
+    private float _laserBombCD;
+    private float _laserBombRate;
+
     //Phase 2 Bomb routine
     [SerializeField] private Transform _bombHolder1;
     [SerializeField] private Transform _bombHolder2;
@@ -94,6 +100,7 @@ public class FinalBoss : MonoBehaviour
             _anim.enabled = true;
             SecondPhaseAbility();
         }
+        P1Ability();
         P2BombDrop();
     }
     private void BossEntrance()
@@ -172,6 +179,20 @@ public class FinalBoss : MonoBehaviour
         _startP2Move = true;
     }
     //lerp eventually
+    private void P1Ability()
+    {
+        //activate laser bomb
+        //deactivate when finished
+        if (_p2Active == false)
+        {
+            _laserBombRate = Random.Range(5.0f, 10.0f);
+            if (Time.time > _laserBombCD)
+            {
+                _laserBombCD = Time.time + _laserBombRate;
+                Instantiate(_laserBomb, _fireHolder.position, Quaternion.identity);
+            }          
+        }
+    }
     private void P2BombDrop()
     {
         //Only active during P2 BombRoutine
@@ -198,8 +219,7 @@ public class FinalBoss : MonoBehaviour
             {
                 _bombCD = Time.time + _bombFireRate;
                 Instantiate(_bombPrefab, _curBombSpawn.position, Quaternion.identity);
-            }
-            
+            }            
         }
     }
 }
