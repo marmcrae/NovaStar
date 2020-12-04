@@ -10,16 +10,13 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private int _curHp;
 
     //base movement
-    [SerializeField] private float _speed = 6.0f;
-    [SerializeField] private Transform _pointA;
-    [SerializeField] private Transform _pointB;
+    [SerializeField] private float _speed = 4.0f;
     //_curTarget will set a new target throughout game
     [SerializeField] private Transform _curTarget;
     [SerializeField] private int _randDirection;
     private bool _newDirection;
 
     //phase 2 movement
-    [SerializeField] private Transform _pointC;
     [SerializeField] private bool _p2Active;
     private bool _activateP2;
     private bool _initialP2;
@@ -31,6 +28,12 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private Transform _fireHolder;
     private float _laserBombCD;
     private float _laserBombRate;
+
+    //Phase 1 Normal Laser
+    [SerializeField] private GameObject _normalLaser;
+    [SerializeField] private Transform _normLaserSpawn;
+    private float _normLaserCD;
+    private float _normLaserFireRate;
 
     //Phase 2 Bomb routine
     [SerializeField] private Transform _bombHolder1;
@@ -101,6 +104,7 @@ public class FinalBoss : MonoBehaviour
             SecondPhaseAbility();
         }
         P1Ability();
+        P1NormalLaser();
         P2BombDrop();
     }
     private void BossEntrance()
@@ -190,6 +194,20 @@ public class FinalBoss : MonoBehaviour
             {
                 _laserBombCD = Time.time + _laserBombRate;
                 Instantiate(_laserBomb, _fireHolder.position, Quaternion.identity);
+            }          
+        }
+    }
+    private void P1NormalLaser()
+    {
+        //cd of 10 - 15 secs
+        //if p2Active false
+        if (_p2Active == false)
+        {
+            _normLaserFireRate = Random.Range(10.0f, 15.0f);
+            if (Time.time > _normLaserCD)
+            {
+                _normLaserCD = Time.time + _normLaserFireRate;
+                Instantiate(_normalLaser, _normLaserSpawn.position, Quaternion.identity, _normLaserSpawn.transform);            
             }          
         }
     }
