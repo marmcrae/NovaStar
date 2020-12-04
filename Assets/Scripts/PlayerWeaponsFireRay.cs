@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponsFire : MonoBehaviour
+public class PlayerWeaponsFireRay : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject[] _weaponsPrefab;
 
@@ -14,10 +13,8 @@ public class PlayerWeaponsFire : MonoBehaviour
     [SerializeField]
     private float _willFire;
 
-
-
     [SerializeField]
-    private float _fireRate = 0.25f;
+    private float _fireRate;
 
     public int _weaponPowerUpID = 0;
 
@@ -31,7 +28,6 @@ public class PlayerWeaponsFire : MonoBehaviour
         FifthWeapon
     }
 
-    [SerializeField]
     private CurrentWeapon _weaponCurrentlyOn;
 
 
@@ -39,13 +35,13 @@ public class PlayerWeaponsFire : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-       _weaponPowerUpID = 0;
-}
+        _weaponPowerUpID = 0;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         RaycastHit hit;
         _fireRate = .20f;
 
@@ -53,18 +49,12 @@ public class PlayerWeaponsFire : MonoBehaviour
         {
             FireShot();
             _willFire = Time.time + _fireRate;
-        } */
-
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _willFire)
-        {
-            FireShot();
-        }
+        } 
+  
     }
 
     public void FireShot()
     {
-        _willFire = Time.time + _fireRate;
-
         switch (_weaponCurrentlyOn)
         {
 
@@ -74,6 +64,7 @@ public class PlayerWeaponsFire : MonoBehaviour
 
             case CurrentWeapon.SecondWeapon:
                 Instantiate(_weaponsPrefab[1], transform.position + new Vector3(5, 0, 0), Quaternion.identity);
+
                 break;
 
             case CurrentWeapon.ThirdWeapon:
@@ -129,44 +120,48 @@ public class PlayerWeaponsFire : MonoBehaviour
 
         if (other.tag == "PowerUp")
         {
-            //WeaponPowerUp weaponPowerUp = other.transform.GetComponent<WeaponPowerUp>();
+            WeaponPowerUp weaponPowerUp = other.transform.GetComponent<WeaponPowerUp>();
             PlayerHealthAndDamage playerHealth = GameObject.Find("Player").GetComponent<PlayerHealthAndDamage>();
             _weaponPowerUpID++;
             playerHealth.health = playerHealth.maximumHealth;
 
-            //if (weaponPowerUp != null)
-            //{
-            switch (_weaponPowerUpID)
+            if (weaponPowerUp != null)
             {
+                switch (_weaponPowerUpID)
+                {
 
-                case 0:
-                    _weaponCurrentlyOn = CurrentWeapon.FirstWeapon;
-                    break;
+                    case 0:
+                        _weaponCurrentlyOn = CurrentWeapon.FirstWeapon;
+                        break;
 
-                case 1:
-                    _weaponCurrentlyOn = CurrentWeapon.SecondWeapon;
-                    break;
+                    case 1:
+                        _weaponCurrentlyOn = CurrentWeapon.SecondWeapon;
 
-                case 2:
-                    _weaponCurrentlyOn = CurrentWeapon.ThirdWeapon;
-                    break;
+                        break;
 
-                case 3:
-                    _weaponCurrentlyOn = CurrentWeapon.FourthWeapon;
-                    break;
+                    case 2:
+                        _weaponCurrentlyOn = CurrentWeapon.ThirdWeapon;
+                        break;
 
-                case 4:
-                    _weaponCurrentlyOn = CurrentWeapon.FifthWeapon;
-                    break;
+                    case 3:
+                        _weaponCurrentlyOn = CurrentWeapon.FourthWeapon;
+                        break;
+
+                    case 4:
+                        _weaponCurrentlyOn = CurrentWeapon.FifthWeapon;
+                        break;
 
 
-                default:
-                    Debug.Log("Invalid ID!");
-                    break;
+                    default:
+                        Debug.Log("Invalid ID!");
+                        break;
+                }
             }
-            //}
 
-            Destroy(other.gameObject);
+
         }
+
+        Destroy(other.gameObject);
+
     }
 }

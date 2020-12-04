@@ -33,6 +33,8 @@ public class TestScript : MonoBehaviour
 
     private float maxCharge = 3.0f;
 
+    private bool laserPrimed;
+
     private GameObject newCharge;
 
     private float totalCharge;
@@ -52,6 +54,7 @@ public class TestScript : MonoBehaviour
     {
 
     }
+    // OnVoidStart
 
     // Update is called once per frame
     void Update()
@@ -62,26 +65,42 @@ public class TestScript : MonoBehaviour
             {
                 _canShoot = false;
                 startTime = Time.time;
+                Debug.Log("Start Key Time: " + startTime);
                 laserCharging = true;
                 chargeSprite.SetActive(true);
-
-
-                //StartCoroutine(ChargeLaser());
             }
 
             if (Input.GetKeyUp(KeyCode.Space) && laserCharging)
             {
                 totalCharge = Time.time - startTime;
 
-
                 if (totalCharge >= 3.0f)
                 {
                     totalCharge = 3.0f;
                 }
-                Debug.Log("Time: " + totalCharge);
-                chargeSprite.SetActive(false);
-                laserCharging = false;
-                FireLaser();
+
+                if(totalCharge > 0.75f)
+                {
+                    laserPrimed = true;
+                }
+
+                if (laserPrimed == true)
+                {
+                    Debug.Log("Key Release Time: " + totalCharge);
+                    chargeSprite.SetActive(false);
+                    laserCharging = false;
+                    laserPrimed = false;
+                    FireLaser();
+                }
+                else
+                {
+                    Debug.Log("Key Release Time: " + totalCharge);
+                    Debug.Log("Not enough key charge, Laser cancelled");
+                    chargeSprite.SetActive(false);
+                    laserCharging = false;
+                    _canShoot = true;
+                }
+                
             }
         }
 
@@ -115,14 +134,13 @@ public class TestScript : MonoBehaviour
             laserAnim.ResetTrigger("laserEnd");
         }
 
-        StartCoroutine(Timer());
+        StartCoroutine(LaserTimer());
         //Destroy(_laserPrefab);
     }
 
 
-    IEnumerator Timer()
+    IEnumerator LaserTimer()
     {
-        float startTime = Time.time;
 
         float fireTime = totalCharge;
 
@@ -143,7 +161,9 @@ public class TestScript : MonoBehaviour
             laserAnim.ResetTrigger("laserStart");
         }
 
+        yield return new WaitForSeconds(1.0f);
         _laserPrefab.SetActive(false);
+        //Destroy(newCharge, 1f);
         _canShoot = true;
     }
 
