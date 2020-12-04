@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PowerUp
+
+  - Fireball
+  - Enemy
+  - Beam
+  - Wave
+
   layers:
   - Default
   - TransparentFX
