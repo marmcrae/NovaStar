@@ -4,11 +4,10 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _startingHealth = 10f;
+    [SerializeField] protected float _startingHealth;
+    [SerializeField] protected float _startingSpeed;
+    protected float _startingPoints;
 
-    private void Start()
-    {
-    }
     protected virtual void Update()
     {
         if (transform.position.x < -35f)
@@ -17,7 +16,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float dmg)
+    protected virtual void TakeDamage(float dmg)
     {
         _startingHealth -= dmg;
         if (_startingHealth <= 0)
@@ -25,8 +24,22 @@ public abstract class Enemy : MonoBehaviour
             Die();
         }
     }
-    private void Die()
+
+    protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerPosition player = other.transform.GetComponent<PlayerPosition>();
+            if (player != null)
+            {
+                //hurt player here;
+            }
+            // hurt enemy?
+        }
     }
 }

@@ -56,7 +56,7 @@ public class SpawnManager : MonoBehaviour
 
             if (waveCountdown <= 0)
             {
-                if (state != SpawnState.SPAWNING)
+                if (state != SpawnState.SPAWNING && waves.Length > 0)
                 {
                     StartCoroutine(SpawnWave(waves[nextWave]));
                 }
