@@ -29,14 +29,14 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Fireball")
         {
             Debug.Log("Fireball Hit detected");
-            Debug.Log("Damage Dealt");
+            Debug.Log("Fireball Damage Dealt");
         }
 
         if (other.tag == "Wave")
         {
             Debug.Log("Wave Hit detected");
-            Debug.Log("Damage Dealt");
-            beamHit = true;
+            Debug.Log("Wave Damage Dealt");
+            
         }
 
     }
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         {
             if (beamHit == false)
             {
-                Debug.Log("Damage Dealt");
+                Debug.Log("Beam Damage Dealt");
                 hitTime = Time.time;
                 beamHit = true;
 
@@ -67,6 +67,8 @@ public class Enemy : MonoBehaviour
         if (beamCollision == true)
         {
             beamCollision = false;
+            //beamHit = false;
+            StartCoroutine(HitTimer());
             Debug.Log("Beam Collision Ended");
         }
     }

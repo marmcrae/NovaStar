@@ -50,17 +50,14 @@ public class LaserCharge : MonoBehaviour
             if (laserPrimed == true)
             {
                 Debug.Log("Key Release Time: " + totalCharge);
-                //chargeSprite.SetActive(false);
                 _laserCharging = false;
                 laserPrimed = false;
-                _playerWepCtrl.FireLaser(totalCharge);
-                //FireLaser();
+                _playerWepCtrl.FireLaser(totalCharge);      
             }
             else
             {
                 Debug.Log("Key Release Time: " + totalCharge);
                 Debug.Log("Not enough key charge, Laser cancelled");
-                //chargeSprite.SetActive(false);
                 _laserCharging = false;
                 _playerWepCtrl.ChargeCancel();
                 Destroy(gameObject);

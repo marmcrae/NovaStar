@@ -8,18 +8,18 @@ public class PlayerWeaponsFire : MonoBehaviour
     [SerializeField]
     private GameObject[] _weaponsPrefab;
 
-    private int _totalWepCount;
-
-    [SerializeField]
-    private GameObject _fireballPrefab;
-
     [SerializeField]
     private GameObject _chargeSprite;
 
-    private Follower _spriteFollow;
+    [SerializeField]
+    private float _fireRate = 0.25f;
 
     [SerializeField]
     private float _willFire;
+
+    private int _totalWepCount;
+
+    public int _weaponPowerUpID = 0;
 
     private GameObject newCharge;
 
@@ -27,23 +27,13 @@ public class PlayerWeaponsFire : MonoBehaviour
 
     private GameObject laserSprite;
 
-    private float _startTime;
+    private Collider _targetCollider = null;
 
     private float _totalCharge;
 
-    private bool _laserFiring;
-
     private bool _canShoot = true;
-
-    private bool _animEnd;
-
-    [SerializeField]
-    private float _fireRate = 0.25f;
-
-    //[SerializeField]
+    
     private Animator _laserAnim;
-
-    public int _weaponPowerUpID = 0;
 
 
     private enum CurrentWeapon : int
@@ -63,7 +53,6 @@ public class PlayerWeaponsFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _spriteFollow = gameObject.GetComponent<Follower>();
         transform.position = new Vector3(0, 0, 0);
         _weaponPowerUpID = 0;
         _totalWepCount = _weaponsPrefab.Length - 1;
@@ -76,7 +65,6 @@ public class PlayerWeaponsFire : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _willFire && _canShoot)
         {
-            //_startTime = Time.time;
             FireShot();
         }
     }
@@ -109,12 +97,8 @@ public class PlayerWeaponsFire : MonoBehaviour
                 break;
 
             case CurrentWeapon.SixthWeapon:
-                _canShoot = false;
-                //_chargeSprite.SetActive(true);
-                //newCharge = Instantiate(_chargeSprite, transform.position + new Vector3(2.3f, -0.24f, 0), Quaternion.identity);
+                _canShoot = false;           
                 newCharge = Instantiate(_chargeSprite, transform);
-                //_spriteFollow.follower = newCharge;
-                //_spriteFollow.objState = 1;
                 newCharge.GetComponent<LaserCharge>()._playerObj = gameObject;
                 break;
 
@@ -127,25 +111,18 @@ public class PlayerWeaponsFire : MonoBehaviour
 
     public void FireLaser(float chargeTime)
     {
-        //_chargeSprite.SetActive(false);
 
         Destroy(newCharge);
 
         _totalCharge = chargeTime;
 
-        //_weaponsPrefab[5].SetActive(true);
-        //newLaser = Instantiate(_weaponsPrefab[5], transform.position + new Vector3(38.1f, 0, 0), Quaternion.identity);
         newLaser = Instantiate(_weaponsPrefab[5], transform);
-        //_spriteFollow.follower = newLaser;
-        //_spriteFollow.objState = 2;
 
         laserSprite = newLaser.transform.GetChild(0).gameObject;
 
         _laserAnim = laserSprite.GetComponent<Animator>();
 
         _laserAnim.SetTrigger("laserStart");
-
-        _laserFiring = true;
 
         if (_laserAnim.GetBool("laserEnd") == true)
         {
@@ -175,8 +152,7 @@ public class PlayerWeaponsFire : MonoBehaviour
             }
             
             playerHealth.health = playerHealth.maximumHealth;
-
-            
+ 
             switch (_weaponPowerUpID)
             {
 
@@ -222,8 +198,6 @@ public class PlayerWeaponsFire : MonoBehaviour
             yield return null;
         }
 
-        _laserFiring = false;
-
         _laserAnim.SetTrigger("laserEnd");
 
         if (_laserAnim.GetBool("laserStart") == true)
@@ -231,11 +205,11 @@ public class PlayerWeaponsFire : MonoBehaviour
             _laserAnim.ResetTrigger("laserStart");
         }
 
-        //laserAnim.GetCurrentAnimatorStateInfo(0).IsName("laserEnd");
         if (_laserAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             Debug.Log("Anim End");
-            //_animEnd = true;
+
+            //newLaser.GetComponent<Collider>().enabled = false;
 
             Destroy(newLaser, 0.3f);
         }
