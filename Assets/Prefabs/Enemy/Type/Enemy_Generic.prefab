@@ -42,8 +42,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingHealth: 10
-  _startingShield: 0
   _startingSpeed: 20
+  _startingPoints: 0
   frequency: 2.5
   magnitude: 5
 --- !u!1001 &2360625924680051745
@@ -111,12 +111,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a51307da507794532867cead034fed20,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.4746771
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a51307da507794532867cead034fed20,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.4746771
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a51307da507794532867cead034fed20,
         type: 3}

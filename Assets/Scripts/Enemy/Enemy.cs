@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float _startingHealth;
     [SerializeField] protected float _startingSpeed;
-    protected float _startingPoints;
+    [SerializeField] protected float _startingPoints;
 
     protected virtual void Update()
     {
