@@ -161,8 +161,13 @@ public class TestScript : MonoBehaviour
             laserAnim.ResetTrigger("laserStart");
         }
 
-        //yield return new WaitForSeconds(1.0f);
-        _laserPrefab.SetActive(false);
+        //laserAnim.GetCurrentAnimatorStateInfo(0).IsName("laserEnd");
+        if (laserAnim.GetCurrentAnimatorStateInfo(0).IsName("Laser_Ending"))
+        {
+            _laserPrefab.SetActive(false);
+        }
+
+       
         //Destroy(newCharge, 1f);
         _canShoot = true;
     }

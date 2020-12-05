@@ -6,7 +6,7 @@ using UnityEngine;
 public class Follower : MonoBehaviour
 {
     [SerializeField]
-    private GameObject follower;
+    public GameObject follower;
 
     [SerializeField]
     private GameObject followTarget;
@@ -24,17 +24,61 @@ public class Follower : MonoBehaviour
 
     private Transform targetPos;
 
+    public int objState;
+
     // Start is called before the first frame update
     void Start()
     {
+        objState = 0;
         targetPos = followTarget.transform;
-        follower.transform.position = new Vector3(targetPos.position.x + xOffset, targetPos.position.y + yOffset, targetPos.position.z + zOffset);
+        //follower.transform.position = new Vector3(targetPos.position.x + xOffset, targetPos.position.y + yOffset, targetPos.position.z + zOffset);
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        follower.transform.position = new Vector3(targetPos.position.x + xOffset, targetPos.position.y + yOffset, targetPos.position.z + zOffset);
+
+        switch (objState)
+        {
+            case 0:
+                if (follower == null)
+                {
+
+                }
+                else
+                {
+                    follower.transform.position = new Vector3(targetPos.position.x + xOffset, targetPos.position.y + yOffset, targetPos.position.z + zOffset);
+                }
+                break;
+            case 1:
+                if (follower == null)
+                {
+
+                }
+                else
+                {
+                    follower.transform.position = new Vector3(targetPos.position.x + 2.3f, targetPos.position.y + -0.24f, targetPos.position.z);
+                }
+                break;
+            case 2:
+                if (follower == null)
+                {
+
+                }
+                else
+                {
+                    follower.transform.position = new Vector3(targetPos.position.x + 38.1f, targetPos.position.y, targetPos.position.z);
+                }
+                break;
+
+        }
+
+        
     }
+
+
 
 }

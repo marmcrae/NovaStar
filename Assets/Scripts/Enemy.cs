@@ -28,13 +28,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Fireball")
         {
-            Debug.Log("Hit detected");
+            Debug.Log("Fireball Hit detected");
+            Debug.Log("Damage Dealt");
         }
 
         if (other.tag == "Wave")
         {
-            Debug.Log("Hit detected");
-
+            Debug.Log("Wave Hit detected");
+            Debug.Log("Damage Dealt");
             beamHit = true;
         }
 
