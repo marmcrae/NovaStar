@@ -58,6 +58,8 @@ public class PlayerPosition : MonoBehaviour
             _playerRotation.transform.rotation = _resetRot;
         }
 
+        PlayerBounds();
+
         //checks for horizontal input to change any animations we may need based on a float value
         _accelerate = horizontalInput;
     }
@@ -65,6 +67,14 @@ public class PlayerPosition : MonoBehaviour
     public float Accelerate()
     {
         return _accelerate;
+    }
+
+    private void PlayerBounds()
+    {
+        Vector3 clampedPos = transform.position;
+        clampedPos.x = Mathf.Clamp(clampedPos.x, -31, 31);
+        clampedPos.y = Mathf.Clamp(clampedPos.y, -18, 18);
+        transform.position = clampedPos;
     }
 
 }
