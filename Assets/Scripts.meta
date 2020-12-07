@@ -1,9 +1,17 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
-guid: 38f11981cee131348a21ea0fc350d0e6
+<<<<<<< HEAD:Assets/Scripts.meta
+guid: a5c2dd820e87f4342a98623dd1f4d846
 =======
 guid: 147978c9d2ac89f4f96b6526b632dd58
->>>>>>> 919f68e0cfed88cdab4765f0eab8748840a12b67
+>>>>>>> 919f68e0cfed88cdab4765f0eab8748840a12b67:Assets/Scenes/SampleScene.unity.meta
+=======
+<<<<<<< HEAD
+guid: 3bb2985ff4ce08c41b3d565ae67df129
+=======
+guid: 147978c9d2ac89f4f96b6526b632dd58
+>>>>>>> dev
+>>>>>>> 91e228b454b06b0bf0c63b4805a579031269f753
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
