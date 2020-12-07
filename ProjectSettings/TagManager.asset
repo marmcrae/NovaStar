@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - PowerUp
+=======
+  - Enemy
+  - FinalBoss
+>>>>>>> 91e228b454b06b0bf0c63b4805a579031269f753
   layers:
   - Default
   - TransparentFX
@@ -14,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
