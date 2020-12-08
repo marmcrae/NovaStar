@@ -167,7 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _posSpeed: 10
   _rotSpeed: 5
-  _posTarget: {fileID: 0}
+  _posTarget: {fileID: 2927693980278824834, guid: 5c0429ee4ff73784cb4fe9bbf0517585,
+    type: 3}
   _rotTarget: {fileID: 0}
 --- !u!1001 &8534072215274620382
 PrefabInstance:
