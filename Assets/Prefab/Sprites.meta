@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefab/Sprites.meta
 guid: 4cd44e865d13641089f97a5f218dd338
+=======
+guid: 40238891b6f870c45842c80b951d6c89
+>>>>>>> dev:Assets/Sprites.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
