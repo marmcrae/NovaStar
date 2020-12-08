@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); //scene 1 is main game in current build/may be subject to change
+        SceneManager.LoadScene(1); //Should load in loading screen whichever integer that may correspond to
     }
 
     public void Quit()
@@ -34,13 +34,9 @@ public class MainMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         _audioMixer.SetFloat("Volume", volume);
+        //need to load game auido through a master mixer (possibly)
     }
 
-
-    //start game
-    //quit game
-    //options overlay
-    //set volume
     //set brightness (post-processing)
 
 }
