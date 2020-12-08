@@ -4879,7 +4879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee42effe3c6c644aaf731dfc5e9f90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 5050648036042021215, guid: 5ab6f89cce33049e78cc4bab1334d150,
+  _bulletPrefab: {fileID: 2576763795707530797, guid: fffa9bb9dfcc8ea41869daa6df268c77,
     type: 3}
   _startAngle: -180
   _endAngle: -90
@@ -4931,7 +4931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee42effe3c6c644aaf731dfc5e9f90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 5050648036042021215, guid: 5ab6f89cce33049e78cc4bab1334d150,
+  _bulletPrefab: {fileID: 2576763795707530797, guid: fffa9bb9dfcc8ea41869daa6df268c77,
     type: 3}
   _startAngle: 0
   _endAngle: -90
@@ -5071,7 +5071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 50
   _speed: 5
-  _bombPrefab: {fileID: 9068513737471592045, guid: 69437a424f07af54d987e876ec2caecc,
+  _bombPrefab: {fileID: 9068513737471592045, guid: 56eab62711a47374085414af24d3f5b0,
     type: 3}
   _bombPlacement: {fileID: 7090471413615836822}
   _phase: 1
