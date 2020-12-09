@@ -11,6 +11,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     protected BoxCollider _boxCollider;
 
     [SerializeField] protected GameObject _enemyWeapon;
+    [SerializeField] protected GameObject _powerUpPrefab;
     [SerializeField] protected Transform _weaponPos;
     [SerializeField] protected float _fireCD;
     [SerializeField] protected float _fireRate = 2.0f;
@@ -18,24 +19,26 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     //beam
     [SerializeField] protected bool _beamHit;
     protected float _hitTime;
-    [SerializeField] protected float _iFrameTime;
+    [SerializeField]
+    protected bool _dying;
+    [SerializeField] protected float _iFrameTime = 0.2f;
     [SerializeField] protected float _beamDamage = 1.0f;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        _anim.transform.GetComponent<Animator>();
-        _boxCollider.transform.GetComponent<BoxCollider>();
+        _anim = transform.GetComponent<Animator>();
+        _boxCollider = transform.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        //Most movement will be made in animation.
     }
     protected virtual void Movement()
     {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
     protected virtual void WeaponFire()
     {
@@ -50,6 +53,8 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         _hp -= _damageTaken;
         if (_hp <= 0)
         {
+            _speed = 0;
+            _dying = true;
             Destroy(this.gameObject, 2.0f);
             //_anim.SetTrigger("Death");
         }
@@ -74,5 +79,23 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     {
         yield return new WaitForSeconds(_iFrameTime);
         _beamHit = false;
+    }
+
+    protected virtual void PowerUp()
+    {
+        int randomNum = Random.Range(1, 4);
+        if (randomNum == 1)
+        {
+            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Damage(1);
+            other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+        }
     }
 }
