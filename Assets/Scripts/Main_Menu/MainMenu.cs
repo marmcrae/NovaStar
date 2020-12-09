@@ -10,6 +10,13 @@ public class MainMenu : MonoBehaviour
     private GameObject _optionsMenu;
     [SerializeField]
     private AudioMixer _audioMixer;
+    [SerializeField]
+    private AudioClip _menuMusic;
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayMusic(_menuMusic, 1f);
+    }
 
     public void StartGame()
     {
@@ -34,9 +41,17 @@ public class MainMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         _audioMixer.SetFloat("Volume", volume);
-        //need to load game auido through a master mixer (possibly)
     }
 
+    public void SetBrightness(float brightness)
+    {
+        RenderSettings.ambientLight = new Color(brightness, brightness, brightness);
+    }
     //set brightness (post-processing)
 
+    public float _brightness;
+    private void Update()
+    {
+        RenderSettings.ambientLight = new Color(_brightness, _brightness, _brightness, 1);
+    }
 }

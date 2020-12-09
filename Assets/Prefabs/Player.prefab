@@ -167,8 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _posSpeed: 10
   _rotSpeed: 5
-  _posTarget: {fileID: 2927693980278824834, guid: 5c0429ee4ff73784cb4fe9bbf0517585,
-    type: 3}
+  _posTarget: {fileID: 0}
   _rotTarget: {fileID: 0}
 --- !u!1001 &8534072215274620382
 PrefabInstance:
@@ -252,6 +251,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5583363
       objectReference: {fileID: 0}
+    - target: {fileID: 7697164501535032767, guid: 293592d9249b44c2ab85a00c57b1c44a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dff61dbbd0f000742b9bb67089957575, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 293592d9249b44c2ab85a00c57b1c44a, type: 3}
 --- !u!4 &6626116161722130020 stripped
