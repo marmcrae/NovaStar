@@ -6,21 +6,22 @@ public abstract class EnemyAbstractClass : MonoBehaviour
 {
     [SerializeField] protected float _hp;
     [SerializeField] protected float _speed = 2f;
+    protected float _hitTime;
 
     protected Animator _anim;
     protected BoxCollider _boxCollider;
 
     [SerializeField] protected GameObject _explosionAnim;
     [SerializeField] protected GameObject _enemyWeapon;
+    [SerializeField] protected GameObject _powerUpPrefab;
     [SerializeField] protected Transform _weaponPos;
     [SerializeField] protected float _fireCD;
     [SerializeField] protected float _fireRate = 2.0f;
 
-    //beam
     [SerializeField] protected bool _beamHit;
     [SerializeField] protected bool _onScreen;
-    protected float _hitTime;
     [SerializeField] protected bool _dying;
+
     [SerializeField] protected float _iFrameTime = 0.2f;
     [SerializeField] protected float _beamDamage = 1.0f;
 
@@ -29,13 +30,15 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     {
         _anim = transform.GetComponent<Animator>();
         _boxCollider = transform.GetComponent<BoxCollider>();
+        PowerUp();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        //Most movement will be made in animation.
     }
+
     protected virtual void Movement()
     {
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
@@ -60,9 +63,10 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         {
             _speed = 0;
             _dying = true;
+
             Instantiate(_explosionAnim, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            //_anim.SetTrigger("Death");
+
         }
 
     }  
@@ -100,24 +104,27 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         _beamHit = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    protected virtual void PowerUp()
     {
-        if (other.tag == "Player")
+        int randomNum = Random.Range(1, 4);
+        if (randomNum == 1)
         {
-            PlayerHealthAndDamage player = other.GetComponent<PlayerHealthAndDamage>();
-
-            Damage(1.0f);
-
-            if (player != null)
-            {
-                player.PlayerDamage();
-            }
+            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
         }
     }
 
-    /*
-    protected virtual void PowerUp()
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        int randomNum = Random
-    } */
+        if(other.CompareTag("Player"))
+        {
+            Damage(1);
+
+            if (other != null)
+            {
+                 other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+            } 
+        }
+    }
+
 }
