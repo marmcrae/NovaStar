@@ -69,7 +69,7 @@ public class Fireball : MonoBehaviour
     {
         if (other.tag == "Enemy" && _isEnemyShot != true)
         {
-            TestEnemy enemy = other.GetComponent<TestEnemy>();
+            EnemyAbstractClass enemy = other.GetComponent<EnemyAbstractClass>();
 
             if (enemy != null)
             {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3934549785114926422}
   - component: {fileID: 6739477637114571988}
   - component: {fileID: 6739477637114572587}
-  - component: {fileID: 6739477637114572584}
+  - component: {fileID: 3264697468986333560}
   m_Layer: 0
   m_Name: Enemy_Fast
   m_TagString: Enemy
@@ -111,7 +111,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.667827, y: 2.6744843, z: 12.508017}
   m_Center: {x: 0, y: 0.2340197, z: 0.6477089}
---- !u!114 &6739477637114572584
+--- !u!114 &3264697468986333560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3361517255514876298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43818d67c28e80f438efe86bd386b922, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ea01ac73cccf864ba2c8b90815e3f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 1
@@ -138,4 +138,6 @@ MonoBehaviour:
   _iFrameTime: 0.2
   _beamDamage: 1
   _stopPatternActive: 1
+  _chargerActive: 0
   _randomPlacementActive: 1
+  _fastSpeed: 60

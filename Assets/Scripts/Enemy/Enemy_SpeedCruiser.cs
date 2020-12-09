@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestEnemy : EnemyAbstractClass
+public class Enemy_SpeedCruiser : EnemyAbstractClass
 {
     // Boolean controls enemy movement.
     private bool moveActive;
@@ -16,9 +16,13 @@ public class TestEnemy : EnemyAbstractClass
 
     [SerializeField]
     private bool _stopPatternActive = true;
+    [SerializeField]
     private bool _chargerActive;
     [SerializeField]
     private bool _randomPlacementActive = true;
+
+    [SerializeField]
+    private float _fastSpeed = 60.0f;
 
     private float newPos;
 
@@ -34,7 +38,12 @@ public class TestEnemy : EnemyAbstractClass
         {
             StartCoroutine(StopMovement());
         }
-        
+
+        if (_chargerActive)
+        {
+            _speed = _fastSpeed;
+        }
+
         _fireCD = _stopTime + 0.3f;
     }
 
@@ -44,11 +53,11 @@ public class TestEnemy : EnemyAbstractClass
         OnScreenCheck();
         Movement();
 
-        if (!_stopPatternActive)
+        if (!_stopPatternActive && !_chargerActive)
         {
             WeaponFire();
         }
-        
+
     }
 
     protected override void WeaponFire()
@@ -84,7 +93,14 @@ public class TestEnemy : EnemyAbstractClass
                     newPos = transform.position.y;
                 }
 
-                _speed = 40.0f;
+                if (_chargerActive)
+                {
+                    _speed = _fastSpeed;
+                }
+                else
+                {
+                    _speed = 40.0f;
+                }
 
                 StopAllCoroutines();
 
@@ -98,11 +114,11 @@ public class TestEnemy : EnemyAbstractClass
                     StartCoroutine(StopMovement());
                 }
 
-                transform.position = new Vector3(40.0f, newPos, 0);            
+                transform.position = new Vector3(40.0f, newPos, 0);
             }
         }
         else
-        {  
+        {
             StartCoroutine(StartMovement());
         }
 
@@ -111,7 +127,7 @@ public class TestEnemy : EnemyAbstractClass
             Debug.Log("Dying, stopping speed");
             _speed = 0;
         }
-        
+
     }
 
 
@@ -125,15 +141,15 @@ public class TestEnemy : EnemyAbstractClass
     IEnumerator StartMovement()
     {
         yield return new WaitForSeconds(0.3f);
-        if (!_shotFired)
+        if (!_shotFired && !_chargerActive)
         {
             _shotFired = true;
             WeaponFire();
         }
-        
+
         yield return new WaitForSeconds(1.0f);
 
-        if(_dying == false)
+        if (_dying == false)
         {
             _speed = 60.0f;
         }

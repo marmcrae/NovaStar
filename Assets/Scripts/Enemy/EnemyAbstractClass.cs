@@ -100,6 +100,21 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         _beamHit = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerHealthAndDamage player = other.GetComponent<PlayerHealthAndDamage>();
+
+            Damage(1.0f);
+
+            if (player != null)
+            {
+                player.PlayerDamage();
+            }
+        }
+    }
+
     /*
     protected virtual void PowerUp()
     {
