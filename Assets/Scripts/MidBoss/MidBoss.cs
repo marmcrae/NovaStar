@@ -34,6 +34,7 @@ public class MidBoss : MonoBehaviour
         _turret1.SetActive(true);
         _turret2.SetActive(true);
         _targetRotation = Quaternion.Euler(0, 270, 0);
+        transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 
     // Update is called once per frame
