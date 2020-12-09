@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
+    [SerializeField]
     private float _speed = 60.0f;
 
     private bool _isEnemyShot = false;
+
+    [SerializeField]
+    private float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +62,20 @@ public class Fireball : MonoBehaviour
     public void AssignEnemyShot()
     {
         _isEnemyShot = true;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy" && _isEnemyShot != true)
+        {
+            TestEnemy enemy = other.GetComponent<TestEnemy>();
+
+            if (enemy != null)
+            {
+                enemy.Damage(damage);
+            }
+        }
     }
 
 }

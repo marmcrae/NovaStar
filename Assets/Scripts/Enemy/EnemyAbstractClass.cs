@@ -10,6 +10,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     protected Animator _anim;
     protected BoxCollider _boxCollider;
 
+    [SerializeField] protected GameObject _explosionAnim;
     [SerializeField] protected GameObject _enemyWeapon;
     [SerializeField] protected Transform _weaponPos;
     [SerializeField] protected float _fireCD;
@@ -17,15 +18,17 @@ public abstract class EnemyAbstractClass : MonoBehaviour
 
     //beam
     [SerializeField] protected bool _beamHit;
+    [SerializeField] protected bool _onScreen;
     protected float _hitTime;
-    [SerializeField] protected float _iFrameTime;
+    [SerializeField] protected bool _dying;
+    [SerializeField] protected float _iFrameTime = 0.2f;
     [SerializeField] protected float _beamDamage = 1.0f;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        _anim.transform.GetComponent<Animator>();
-        _boxCollider.transform.GetComponent<BoxCollider>();
+        _anim = transform.GetComponent<Animator>();
+        _boxCollider = transform.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     }
     protected virtual void Movement()
     {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
     protected virtual void WeaponFire()
     {
@@ -47,12 +50,21 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     }
     public virtual void Damage(float _damageTaken)
     {
-        _hp -= _damageTaken;
+        if (_onScreen)
+        {
+            Debug.Log("Damage Taken");
+            _hp -= _damageTaken;    
+        }
+
         if (_hp <= 0)
         {
-            Destroy(this.gameObject, 2.0f);
+            _speed = 0;
+            _dying = true;
+            Instantiate(_explosionAnim, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
             //_anim.SetTrigger("Death");
         }
+
     }  
     protected virtual void OnTriggerStay(Collider other)
     {
@@ -60,7 +72,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         if (other.CompareTag("Beam"))
         {
             Debug.Log("Hit detected");
-            if (_beamHit == false)
+            if (_beamHit != true)
             {
                 Debug.Log("Damage Dealt");
                 Damage(_beamDamage);
@@ -70,9 +82,27 @@ public abstract class EnemyAbstractClass : MonoBehaviour
             }
         }
     }
+
+    protected virtual void OnScreenCheck()
+    {
+        if (transform.position.x < 33.0f && transform.position.x > -33.0f)
+        {
+            _onScreen = true;
+        }
+        else
+        {
+            _onScreen = false;
+        }
+    }
     IEnumerator HitTimer()
     {
         yield return new WaitForSeconds(_iFrameTime);
         _beamHit = false;
     }
+
+    /*
+    protected virtual void PowerUp()
+    {
+        int randomNum = Random
+    } */
 }
