@@ -29,8 +29,13 @@ public class Weapon : MonoBehaviour
     public void WeaponMovement()
     {
 
-        transform.Translate(Vector3.right * _speed * Time.deltaTime);
- 
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+
+        if (transform.position.x < -37)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
 }

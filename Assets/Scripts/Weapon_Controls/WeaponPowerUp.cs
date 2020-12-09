@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class WeaponPowerUp : MonoBehaviour
 {
-    /*
-      Player will start with a base weapon/floor. Each upgrade will increase the weapon firing ability
-      based on student in put. You are required to have at least 3 weapon upgrades but teams are
-      allowed to have more. 
+    [SerializeField]
+    private Transform _newPosLeft;
 
-      -need access to player: complete
-      -create base weapons: 
-      -powerup switch case: complete
-      - min 3 weapons: 
-
-  */
+    [SerializeField]
+    private Transform _newPosRight;
 
     [SerializeField]
     private GameObject[] _weaponsPowerUpPrefab;
 
     [SerializeField]
-    private float _speed = 5;
+    private float _speed = 1;
 
 
     // Update is called once per frame
@@ -32,12 +26,6 @@ public class WeaponPowerUp : MonoBehaviour
     void PowerUpMovement()
     {
 
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
-
-        if (transform.position.y < -18)
-        {
-            Destroy(this.gameObject);
-        }
 
     }
 }

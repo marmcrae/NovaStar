@@ -11,6 +11,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     protected BoxCollider _boxCollider;
 
     [SerializeField] protected GameObject _enemyWeapon;
+    [SerializeField] protected GameObject _powerUpPrefab;
     [SerializeField] protected Transform _weaponPos;
     [SerializeField] protected float _fireCD;
     [SerializeField] protected float _fireRate = 2.0f;
@@ -54,6 +55,17 @@ public abstract class EnemyAbstractClass : MonoBehaviour
             //_anim.SetTrigger("Death");
         }
     }  
+
+    //PowerUp method
+
+    protected virtual void PowerUp()
+    {
+        int randomNum = Random.Range(1, 4);
+        if (randomNum == 1)
+        {
+            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
+        }
+    }
     protected virtual void OnTriggerStay(Collider other)
     {
         //Beam Collision
