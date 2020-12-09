@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     public float timeBetweenWaves = 5f;
     //Serialized Fields end 
 
+    [SerializeField]
     private int nextWave = 0;
     private float waveCountdown;
     private float searchCountdown = 1f;
@@ -69,14 +70,15 @@ public class SpawnManager : MonoBehaviour
     }
     void WaveCompleted()
     {
-        Debug.Log("Wave Completed");
+        Debug.Log("Wave Completed" + nextWave);
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
         if (nextWave + 1 > waves.Length - 1)
         {
-            nextWave = 0;
+            //nextWave = 0;
             Debug.Log("loop");
+            _stopSpawning = true;
         }
 
         else
