@@ -4,34 +4,44 @@ using UnityEngine;
 
 public class Big_Enemy_Weapon : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private float _speed = 15;
 
-    Color[] _colors =
+    public PlayerHealthAndDamage player;
+
+    private void Start()
     {
-        Color.red,
-        Color.black
-    };
+         player = GameObject.Find("PlayerHealthAndDamag").GetComponent<PlayerHealthAndDamage>();
+
+        if (player == null)
+        {
+            Debug.Log("Player is NULL");
+        }
+    }
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (spriteRenderer == null)
-        {
-            Debug.Log("Sprite Rendered is NULL");
-        }
-
-        spriteRenderer.color = _colors[Random.Range(0, 2)];
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        WeaponMovement();
+    }
+
+    public void WeaponMovement()
+    {
+
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+
         if (transform.position.x < -37)
         {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player.PlayerDamage();
             Destroy(this.gameObject);
         }
     }
