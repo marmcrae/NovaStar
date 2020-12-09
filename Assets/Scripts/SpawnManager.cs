@@ -106,7 +106,7 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < _wave.count; i++)
         {
-            _wave.rate = Random.Range(.25f, 2.5f);
+            _wave.rate = Random.Range(1f, 2.5f);
             SpawnEnemy(_wave.enemy[Random.Range(0, _wave.enemy.Length)]);
             yield return new WaitForSeconds(_wave.rate);
         }
