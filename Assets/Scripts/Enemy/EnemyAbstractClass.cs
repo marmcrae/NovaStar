@@ -115,16 +115,6 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         _beamHit = false;
     }
 
-
-    protected virtual void PowerUp()
-    {
-        int randomNum = Random.Range(1, 4);
-        if (randomNum == 1)
-        {
-            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
-        }
-    }
-
     protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
