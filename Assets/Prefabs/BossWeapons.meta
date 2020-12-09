@@ -1,5 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefab/BossWeapons.meta
+<<<<<<< HEAD:Assets/Scenes.meta
+guid: 37bcdef89d92b6744b1816df55e013f0
+guid: 4938c704d69127641bd8a0b2fbde2974
+
+=======
+guid: 480c0cb7e57ee55428062b755ef4d79d
+>>>>>>> f9e842db18204ab59185a3ee4f08afca27d1b6cc:Assets/Prefab/BossWeapons.meta
+=======
 guid: d01cb5b03b814a84987f17ff08052418
+>>>>>>> 185f21bc7b073ee42178a30c79d97adc1f3131c8:Assets/Prefabs/BossWeapons.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
