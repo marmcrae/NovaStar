@@ -25,6 +25,7 @@ public class AggressiveEnemy : EnemyAbstractClass
     // Start is called before the first frame update
     void Start()
     {
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
         _speed = 50.0f;
         _hp = 2f;
     }
