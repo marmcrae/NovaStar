@@ -5,11 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Fireball
-  - Wave
-  - Beam
   - FinalBoss
-  - Player_Projectile
+
   layers:
   - Default
   - TransparentFX
@@ -19,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
