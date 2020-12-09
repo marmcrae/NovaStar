@@ -24,8 +24,8 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        _anim.transform.GetComponent<Animator>();
-        _boxCollider.transform.GetComponent<BoxCollider>();
+        _anim = transform.GetComponent<Animator>();
+        _boxCollider = transform.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
