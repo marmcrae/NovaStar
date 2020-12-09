@@ -20,7 +20,9 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); //Should load in loading screen whichever integer that may correspond to
+        //Should load in loading screen whichever integer that may correspond to
+        //For proper working order you can order your scenes 0 - Mainmenu 1 -loadingscreen 2 - Maingame
+        SceneManager.LoadScene(1); 
     }
 
     public void Quit()
