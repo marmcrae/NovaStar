@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4696352574035893482}
   - component: {fileID: 6221357739428165294}
   - component: {fileID: 1686969493579806177}
+  - component: {fileID: 2083727935962016496}
   m_Layer: 0
   m_Name: Fire_Spritesheet_0 (2)
-  m_TagString: Untagged
+  m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +134,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2083727935962016496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330206379982787280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &5028725586173214466
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,10 +156,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7623262686267054469}
-  - component: {fileID: 513406614628334502}
   m_Layer: 0
   m_Name: Fire_Double_Player
-  m_TagString: Fireball
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,18 +179,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &513406614628334502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5028725586173214466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8451737946782308070
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,9 +192,10 @@ GameObject:
   - component: {fileID: 9059806800111326892}
   - component: {fileID: 1020048054689028292}
   - component: {fileID: 3714151503299839664}
+  - component: {fileID: 4842772031416685418}
   m_Layer: 0
   m_Name: Fire_Spritesheet_0 (1)
-  m_TagString: Untagged
+  m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,3 +313,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4842772031416685418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451737946782308070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

@@ -25,7 +25,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerDamageTest();
+        //PlayerDamageTest();
     }
 
 
