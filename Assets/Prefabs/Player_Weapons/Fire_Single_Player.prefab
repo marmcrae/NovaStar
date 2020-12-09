@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -448771993980736193}
   - component: {fileID: 4294462935031302658}
   m_Layer: 0
-  m_Name: Fire_Single
+  m_Name: Fire_Single_Player
   m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &8947166422867268430
 GameObject:
   m_ObjectHideFlags: 0
