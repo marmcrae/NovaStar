@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3934549785114926422}
   - component: {fileID: 6739477637114571988}
   - component: {fileID: 6739477637114572587}
-  - component: {fileID: 3264697468986333560}
+  - component: {fileID: -9147613599284364745}
   m_Layer: 0
-  m_Name: Enemy_Fast
+  m_Name: Enemy_Base_Cruiser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3361517255514876298}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 40, y: 0.11, z: -0}
-  m_LocalScale: {x: 0.4746771, y: 0.4746771, z: 0.4746771}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,7 +111,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.667827, y: 2.6744843, z: 12.508017}
   m_Center: {x: 0, y: 0.2340197, z: 0.6477089}
---- !u!114 &3264697468986333560
+--- !u!114 &-9147613599284364745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,15 +120,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3361517255514876298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ea01ac73cccf864ba2c8b90815e3f01, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d2e0f7a080ce034c8328f00199034d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 1
-  _speed: 40
-  _explosionAnim: {fileID: 4839354891253967877, guid: 5631c187855814f039beb74819dfc8bc,
+  _hp: 3
+  _speed: 15
+  _points: 200
+  _explosionScale: 2.5
+  _player: {fileID: 0}
+  _playerScore: {fileID: 0}
+  _explosionAnim: {fileID: 4839354891253967877, guid: 4f15e8b249fbf374ca6c7b13f70f26f3,
     type: 3}
   _enemyWeapon: {fileID: 4751846129131514240, guid: 8abe539fbadc6904882afb6bdf406f32,
     type: 3}
+  _powerUpPrefab: {fileID: 0}
   _weaponPos: {fileID: 1800837295739870105}
   _fireCD: 0
   _fireRate: 2
@@ -137,7 +142,8 @@ MonoBehaviour:
   _dying: 0
   _iFrameTime: 0.2
   _beamDamage: 1
-  _stopPatternActive: 1
+  _stopPatternActive: 0
   _chargerActive: 0
   _randomPlacementActive: 1
-  _fastSpeed: 60
+  _baseSpeed: 15
+  _fastSpeed: 15

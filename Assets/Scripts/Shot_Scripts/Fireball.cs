@@ -9,6 +9,8 @@ public class Fireball : MonoBehaviour
 
     private bool _isEnemyShot = false;
 
+    [SerializeField] protected GameObject _explosionAnim;
+
     [SerializeField]
     private float damage;
 
@@ -74,6 +76,12 @@ public class Fireball : MonoBehaviour
             if (enemy != null)
             {
                 enemy.Damage(damage);
+
+                if(_explosionAnim != null)
+                {
+                    Instantiate(_explosionAnim, transform.position, Quaternion.identity);
+                }
+               
             }
         }
     }

@@ -147,8 +147,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.29, y: 2.33, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.9458613, y: 2.33, z: 1}
+  m_Center: {x: -0.17206925, y: 0, z: 0}
 --- !u!54 &-5912174785858694508
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -178,4 +178,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 80
+  _explosionAnim: {fileID: 0}
   damage: 1
