@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MainMenu : MonoBehaviour
     private AudioMixer _audioMixer;
     [SerializeField]
     private AudioClip _menuMusic;
+    [SerializeField]
+    private Image _brightness;
 
     private void Start()
     {
@@ -47,13 +50,8 @@ public class MainMenu : MonoBehaviour
 
     public void SetBrightness(float brightness)
     {
-        RenderSettings.ambientLight = new Color(brightness, brightness, brightness);
-    }
-    //set brightness (post-processing)
-
-    public float _brightness;
-    private void Update()
-    {
-        RenderSettings.ambientLight = new Color(_brightness, _brightness, _brightness, 1);
+        _brightness.color = new Color(255, 255, 255, brightness);
+        PlayerPrefs.SetFloat("Brightness", brightness);
+        PlayerPrefs.Save();
     }
 }
