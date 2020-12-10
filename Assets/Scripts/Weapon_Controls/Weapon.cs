@@ -30,7 +30,12 @@ public class Weapon : MonoBehaviour
     {
 
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
- 
+
+        if (transform.position.x < 37)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
 }

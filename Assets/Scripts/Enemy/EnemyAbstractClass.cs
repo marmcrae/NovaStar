@@ -95,6 +95,17 @@ public abstract class EnemyAbstractClass : MonoBehaviour
         }
 
     }  
+
+    //PowerUp method
+
+    protected virtual void PowerUp()
+    {
+        int randomNum = Random.Range(1, 4);
+        if (randomNum == 1)
+        {
+            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
+        }
+    }
     protected virtual void OnTriggerStay(Collider other)
     {
         //Beam Collision
@@ -127,16 +138,6 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     {
         yield return new WaitForSeconds(_iFrameTime);
         _beamHit = false;
-    }
-
-
-    protected virtual void PowerUp()
-    {
-        int randomNum = Random.Range(1, 4);
-        if (randomNum == 1)
-        {
-            Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
-        }
     }
 
     protected virtual void OnTriggerEnter(Collider other)
