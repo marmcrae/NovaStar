@@ -24,8 +24,11 @@ public class AggressiveEnemy : EnemyAbstractClass
 
     // Start is called before the first frame update
     void Start()
-    {
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
+    {      
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         _speed = 50.0f;
         _hp = 2f;
     }
@@ -33,8 +36,16 @@ public class AggressiveEnemy : EnemyAbstractClass
     // Update is called once per frame
     void Update()
     {
-        Charge();
-        WrapAround();
+        if (_target != null)
+        {
+            Charge();
+            WrapAround();
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * 20f * Time.deltaTime);
+        }
+        
     }
     private void Charge()
     {
