@@ -42,7 +42,6 @@ public class AggressiveEnemy : EnemyAbstractClass
 
         if (_dist < _distCharge)
         {
-            transform.SetParent(null);
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             _chargeActive = true;
             _enemyShield.SetActive(true);
