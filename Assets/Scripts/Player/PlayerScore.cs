@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionAnim : MonoBehaviour
+public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private float _animTime;
+    private float _score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, _animTime);
+        
     }
 
     // Update is called once per frame
@@ -16,4 +17,11 @@ public class ExplosionAnim : MonoBehaviour
     {
         
     }
+    public void AddScore(float points)
+    {
+        _score += points;
+        //_uiManager.AddScore(_score);
+        Debug.Log("Current Score: " + _score);
+    }
+
 }

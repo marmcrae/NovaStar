@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_SpeedCruiser : EnemyAbstractClass
+public class Enemy_BaseCruiser : EnemyAbstractClass
 {
     // Boolean controls enemy movement.
     private bool moveActive;
@@ -88,7 +88,7 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
         {
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
 
-            if (transform.position.x < -70.0f)
+            if (transform.position.x < -55.0f)
             {
                 if (_randomPlacementActive)
                 {
