@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6141553534373200271}
   - component: {fileID: 5253634724338756701}
-  - component: {fileID: 5679923605943363534}
+  - component: {fileID: 2640452728393974723}
   - component: {fileID: 4238310702236769652}
   - component: {fileID: 4681411688305962578}
   m_Layer: 0
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &5679923605943363534
+--- !u!65 &2640452728393974723
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,8 +129,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4007711, y: 0.66328144, z: 1}
-  m_Center: {x: -0.06694865, y: 0.00031757355, z: 0}
+  m_Size: {x: 1.3079493, y: 0.66328144, z: 1}
+  m_Center: {x: -0.11335954, y: 0.00031757355, z: 0}
 --- !u!54 &4238310702236769652
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,6 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 60
+  _explosionAnim: {fileID: 4494989596756331637, guid: 774e7f3be1393684ea4992602b212170,
+    type: 3}
+  damage: 1
 --- !u!1 &7406822120494880207
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,8 +259,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4007711, y: 0.66328144, z: 1}
-  m_Center: {x: -0.06694865, y: 0.00031757355, z: 0}
+  m_Size: {x: 1.3079493, y: 0.66328144, z: 1}
+  m_Center: {x: -0.11335954, y: 0.00031757355, z: 0}
 --- !u!54 &3982539334814682921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -285,6 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 60
+  _explosionAnim: {fileID: 4494989596756331637, guid: 774e7f3be1393684ea4992602b212170,
+    type: 3}
+  damage: 1
 --- !u!1 &8041799866245648987
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8356880296575352060}
   - component: {fileID: 6720318556131313191}
-  - component: {fileID: 7535503386208412754}
+  - component: {fileID: 5589467220627051128}
   - component: {fileID: 3739198176902379030}
   - component: {fileID: 6467624621415981285}
   m_Layer: 0
@@ -370,7 +378,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &7535503386208412754
+--- !u!65 &5589467220627051128
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,8 +389,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4007711, y: 0.66328144, z: 1}
-  m_Center: {x: -0.06694865, y: 0.00031757355, z: 0}
+  m_Size: {x: 1.3079493, y: 0.66328144, z: 1}
+  m_Center: {x: -0.11335954, y: 0.00031757355, z: 0}
 --- !u!54 &3739198176902379030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -411,3 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 60
+  _explosionAnim: {fileID: 4494989596756331637, guid: 774e7f3be1393684ea4992602b212170,
+    type: 3}
+  damage: 1

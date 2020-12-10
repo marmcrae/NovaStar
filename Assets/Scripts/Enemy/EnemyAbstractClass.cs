@@ -6,10 +6,19 @@ public abstract class EnemyAbstractClass : MonoBehaviour
 {
     [SerializeField] protected float _hp;
     [SerializeField] protected float _speed = 2f;
+    [SerializeField] protected float _points = 100;
+    [SerializeField] protected float _explosionScale = 1.0f;
+
     protected float _hitTime;
 
     protected Animator _anim;
     protected BoxCollider _boxCollider;
+
+    [SerializeField]
+    protected GameObject _player;
+
+    [SerializeField]
+    protected PlayerScore _playerScore;
 
     [SerializeField] protected GameObject _explosionAnim;
     [SerializeField] protected GameObject _enemyWeapon;
@@ -30,6 +39,11 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     {
         _anim = transform.GetComponent<Animator>();
         _boxCollider = transform.GetComponent<BoxCollider>();
+
+        _player = GameObject.Find("Player");
+
+        _playerScore = _player.GetComponent<PlayerScore>();
+
         PowerUp();
     }
 
@@ -64,8 +78,19 @@ public abstract class EnemyAbstractClass : MonoBehaviour
             _speed = 0;
             _dying = true;
 
-            Instantiate(_explosionAnim, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            _playerScore.AddScore(_points);
+            Debug.Log("Enemy Destroyed");
+
+
+            if (_explosionAnim != null)
+            {
+                Debug.Log("Explosion");
+                GameObject explosion = Instantiate(_explosionAnim, transform.position, Quaternion.identity);
+                explosion.transform.localScale = new Vector3(_explosionScale, _explosionScale, _explosionScale);
+
+            }
+
+            Destroy(this.gameObject, 0.01f);
 
         }
 
@@ -119,13 +144,20 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Damage(1);
+            Damage(1.0f);
 
             if (other != null)
             {
                  other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
             } 
         }
+
+        if(other.tag == "Fireball")
+        {
+            Destroy(other.gameObject);
+        }
+
+
     }
 
 }

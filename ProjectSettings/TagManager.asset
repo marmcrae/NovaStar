@@ -4,9 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Fireball
+  - Wave
+  - Beam
   - Enemy
   - FinalBoss
-
+  - Music
+  - Player_Projectile
+  - Brightness
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - UI
   - 
   - 
-  - Enemy
+  - 
   - 
   - 
   - 
