@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDeathManager : MonoBehaviour
+public class EndPanelManager : MonoBehaviour
 {
    private SpawnManager _spawnManager;
-   private GameObject _deathPanel;
+   private GameObject _endPanel;
     void Start()
     {
-        _deathPanel = GameObject.Find("Player_Death_Panel");
-        if(_deathPanel == null)
+        _endPanel = GameObject.Find("End_Panel");
+        if(_endPanel == null)
         {
-            Debug.Log("Missing death panel");
+            Debug.Log("Missing end panel");
         }
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
@@ -25,7 +25,6 @@ public class PlayerDeathManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
-            _deathPanel.SetActive(false);
         }
     }
 
@@ -38,12 +37,11 @@ public class PlayerDeathManager : MonoBehaviour
     public void LoadCheckpoint()
     {
         _spawnManager.SetStatus();
-        _deathPanel.SetActive(false);
+        _endPanel.SetActive(false);
     }
 
     public void QuitLevel()
     {
         SceneManager.LoadScene(0);
-        _deathPanel.SetActive(false);
     }
 }

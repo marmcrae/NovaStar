@@ -10,7 +10,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
     [SerializeField]
     public float maximumHealth = 1;
     [SerializeField] 
-    private GameObject _deathPanel;
+    private GameObject _endPanel;
 
     private PlayerWeaponsFire _playerWeapon;
     private SpawnManager _spawnManager;
@@ -23,9 +23,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
         {
             Debug.LogError("Missing Spawn Manager");
         }
-        if (_deathPanel == null)
+        if (_endPanel == null)
         {
-            Debug.LogError("Missing Death Panel");
+            Debug.LogError("Missing End Panel");
         }
 
         _playerWeapon = GameObject.Find("Player").GetComponent<PlayerWeaponsFire>();
@@ -51,7 +51,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             health = 5f;
-            _deathPanel.SetActive(true);
+            _endPanel.SetActive(true);
             
             if (_spawnManager.GetCheckPointStatus() == true)
             {
