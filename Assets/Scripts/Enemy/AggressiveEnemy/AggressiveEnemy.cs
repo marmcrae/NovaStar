@@ -42,6 +42,7 @@ public class AggressiveEnemy : EnemyAbstractClass
 
         if (_dist < _distCharge)
         {
+            transform.SetParent(null);
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             _chargeActive = true;
             _enemyShield.SetActive(true);
@@ -55,8 +56,8 @@ public class AggressiveEnemy : EnemyAbstractClass
                 transform.rotation = Quaternion.Lerp(transform.rotation, _rotTarget.rotation, Time.deltaTime * 5f);
             }
             else
-            {
-                transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+            {            
+                transform.Translate(Vector3.forward * _speed * Time.deltaTime);             
             }
         }
     }
