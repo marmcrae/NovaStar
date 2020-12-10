@@ -6,7 +6,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
 {
     [SerializeField] protected float _hp;
     [SerializeField] protected float _speed = 2f;
-    [SerializeField] protected float _points = 10;
+    [SerializeField] protected float _points = 100;
     [SerializeField] protected float _explosionScale = 1.0f;
 
     protected float _hitTime;
