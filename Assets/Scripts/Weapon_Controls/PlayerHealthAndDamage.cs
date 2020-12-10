@@ -10,6 +10,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
     [SerializeField]
     public float maximumHealth = 1;
 
+    [SerializeField] 
+    private GameObject _explosionAnim;
+
     private PlayerWeaponsFire _playerWeapon;
 
     private void Start()
@@ -25,7 +28,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PlayerDamageTest();
+        PlayerDamageTest();
     }
 
 
@@ -36,6 +39,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
 
         if (health <= 0)
         {
+            Instantiate(_explosionAnim, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

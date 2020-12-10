@@ -11,7 +11,7 @@ public class Big_Enemy_Weapon : MonoBehaviour
 
     private void Start()
     {
-         player = GameObject.Find("PlayerHealthAndDamag").GetComponent<PlayerHealthAndDamage>();
+         player = GameObject.Find("Player").GetComponent<PlayerHealthAndDamage>();
 
         if (player == null)
         {

@@ -72,6 +72,7 @@ public class BigSlowEnemy : EnemyAbstractClass
 
         yield return new WaitForSeconds(10f);
         Instantiate(_weaponPrefabs[1], _weaponPos.position, Quaternion.identity);
+        Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(4f);
         _lasersOn = true;
         _fireBreak = true;
@@ -82,6 +83,7 @@ public class BigSlowEnemy : EnemyAbstractClass
     {
         yield return new WaitForSeconds(10f);
         Instantiate(_weaponPrefabs[0], _weaponPos.position, Quaternion.identity);
+        Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(4f);
         _lasersOn = false;
         _fireBreak = true;

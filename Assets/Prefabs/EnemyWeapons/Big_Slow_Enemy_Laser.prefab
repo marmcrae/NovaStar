@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6256109815664049985}
   - component: {fileID: 126991006277172563}
+  - component: {fileID: -4112954374835486482}
   m_Layer: 0
   m_Name: Big_Slow_Enemy_Laser
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15
   player: {fileID: 0}
+--- !u!65 &-4112954374835486482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256109815664049991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6256109816692729950
 GameObject:
   m_ObjectHideFlags: 0
