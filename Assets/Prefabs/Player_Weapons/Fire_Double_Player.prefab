@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3540725816995571552}
   - component: {fileID: 8816177165077663842}
   - component: {fileID: 4696352574035893482}
-  - component: {fileID: 6221357739428165294}
   - component: {fileID: 1686969493579806177}
   - component: {fileID: 2083727935962016496}
+  - component: {fileID: 1150171420260775580}
   m_Layer: 0
   m_Name: Fire_Spritesheet_0 (2)
   m_TagString: Fireball
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4330206379982787280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.82, z: 0}
+  m_LocalPosition: {x: -0.9, y: -0.82, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 7623262686267054469}
@@ -105,19 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &6221357739428165294
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4330206379982787280}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2101574, y: 0.5807581, z: 0.7317862}
-  m_Center: {x: -0.106167495, y: 0.003802538, z: -0.021531224}
 --- !u!54 &1686969493579806177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,7 +133,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 60
+  _explosionAnim: {fileID: 4494989596756331637, guid: 774e7f3be1393684ea4992602b212170,
+    type: 3}
   damage: 1
+--- !u!65 &1150171420260775580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330206379982787280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0940914, y: 0.6305003, z: 0.7317862}
+  m_Center: {x: -0.16420054, y: 0.0038022995, z: -0.021531224}
 --- !u!1 &5028725586173214466
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,8 +298,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2101574, y: 0.5807581, z: 0.7317862}
-  m_Center: {x: -0.106167495, y: 0.003802538, z: -0.021531224}
+  m_Size: {x: 1.0940914, y: 0.6305003, z: 0.7317862}
+  m_Center: {x: -0.16420054, y: 0.0038022995, z: -0.021531224}
 --- !u!54 &3714151503299839664
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,4 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784d107be75580c4cbec4afc196d0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 60
+  _explosionAnim: {fileID: 4494989596756331637, guid: 774e7f3be1393684ea4992602b212170,
+    type: 3}
   damage: 1
