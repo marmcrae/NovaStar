@@ -22,6 +22,8 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
     private bool _randomPlacementActive = true;
 
     [SerializeField]
+    private float _baseSpeed = 40.0f;
+    [SerializeField]
     private float _fastSpeed = 60.0f;
 
     private float newPos;
@@ -30,6 +32,10 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
     // Start is called before the first frame update
     protected override void Start()
     {
+        _player = GameObject.Find("Player");
+
+        _playerScore = _player.GetComponent<PlayerScore>();
+
 
         _stopTime = Random.Range(0.3f, 0.5f);
         moveActive = true;
@@ -99,7 +105,7 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
                 }
                 else
                 {
-                    _speed = 40.0f;
+                    _speed = _baseSpeed;
                 }
 
                 StopAllCoroutines();
@@ -151,7 +157,7 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
 
         if (_dying == false)
         {
-            _speed = 60.0f;
+            _speed = _fastSpeed;
         }
         moveActive = true;
 
