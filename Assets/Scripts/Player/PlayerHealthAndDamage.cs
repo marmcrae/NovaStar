@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealthAndDamage : MonoBehaviour
 {
@@ -9,23 +8,15 @@ public class PlayerHealthAndDamage : MonoBehaviour
     public float health = 1;
     [SerializeField]
     public float maximumHealth = 1;
-    [SerializeField] 
-    private GameObject _endPanel;
 
     private PlayerWeaponsFire _playerWeapon;
     private SpawnManager _spawnManager;
-    private Button _checkpointButton;
-
     private void Start()
     {
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
             Debug.LogError("Missing Spawn Manager");
-        }
-        if (_endPanel == null)
-        {
-            Debug.LogError("Missing End Panel");
         }
 
         _playerWeapon = GameObject.Find("Player").GetComponent<PlayerWeaponsFire>();
@@ -51,17 +42,6 @@ public class PlayerHealthAndDamage : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             health = 5f;
-            _endPanel.SetActive(true);
-            
-            if (_spawnManager.GetCheckPointStatus() == true)
-            {
-                _checkpointButton = GameObject.Find("Checkpoint_Button").GetComponent<Button>();
-                if (_checkpointButton == null)
-                {
-                    Debug.LogError("Missing checkpoint button");
-                }
-                _checkpointButton.interactable = true;
-            }
         }
     }
 
@@ -75,5 +55,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
         }
     }
 
+    public bool getPlayerStatus()
+    {
+        return this.gameObject.activeSelf;
+    }
 }
 

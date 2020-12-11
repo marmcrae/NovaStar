@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class EndPanelManager : MonoBehaviour
 {
-   private SpawnManager _spawnManager;
-   private GameObject _endPanel;
-    void Start()
-    {
+    private GameObject _endPanel;
+    private SpawnManager _spawnManager;
+   void Start()
+   {
         _endPanel = GameObject.Find("End_Panel");
+        _endPanel.SetActive(false);
         if(_endPanel == null)
         {
             Debug.Log("Missing end panel");
         }
+        
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
