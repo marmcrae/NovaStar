@@ -9,6 +9,8 @@ public class CanvasManager : MonoBehaviour
     private Button _checkPointButton;
     private PlayerHealthAndDamage _player;
     private SpawnManager _spawnManager;
+    private Text _winText;
+    private Text _diedText;
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<PlayerHealthAndDamage>();
@@ -31,6 +33,7 @@ public class CanvasManager : MonoBehaviour
     void Update()
     {
         CheckEndPanelStatus();
+        CheckWinStatus();
     }
 
     void CheckEndPanelStatus()
@@ -38,19 +41,27 @@ public class CanvasManager : MonoBehaviour
         if (!_player.getPlayerStatus())
         {
             _endPanel.SetActive(true);
+            _diedText = GameObject.Find("Died_Text").GetComponent<Text>();
+            _diedText.enabled = true;
             if (_spawnManager.GetCheckPointStatus())
             {
                 _checkPointButton = GameObject.Find("Checkpoint_Button").GetComponent<Button>();
-                if (_checkPointButton == null)
-                {
-                    Debug.LogError("Missing checkpoint button");
-                }
                 _checkPointButton.interactable = true;
             }
         }
         else
         {
             _endPanel.SetActive(false);
+        }
+    }
+
+    void CheckWinStatus()
+    {
+        if (_spawnManager.DidWin())
+        {
+            _endPanel.SetActive(true);
+            _winText = GameObject.Find("Win_Text").GetComponent<Text>();
+            _winText.enabled = true;
         }
     }
 }

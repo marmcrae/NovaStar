@@ -149,6 +149,17 @@ public class SpawnManager : MonoBehaviour
         return _checkpointReached;
     }
 
+    public bool DidWin()
+    {
+        if (nextWave + 1 > waves.Length - 1 && _stopSpawning)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
     void DestroyAllObjects()
     {
         objectsToDestroy = GameObject.FindGameObjectsWithTag("Enemy");
