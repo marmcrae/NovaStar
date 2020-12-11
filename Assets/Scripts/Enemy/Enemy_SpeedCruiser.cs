@@ -56,6 +56,7 @@ public class Enemy_SpeedCruiser : EnemyAbstractClass
     // Update is called once per frame
     protected override void Update()
     {
+        base.Update();
         OnScreenCheck();
         Movement();
 

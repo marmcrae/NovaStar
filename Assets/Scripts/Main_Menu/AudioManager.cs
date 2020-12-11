@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip music, float volume) 
     {
+        _bgmSource.Stop();
         _bgmSource.clip = music;
         _bgmSource.loop = true;
         _bgmSource.Play();
