@@ -136,7 +136,7 @@ MonoBehaviour:
   _powerUpPrefab: {fileID: 0}
   _weaponPos: {fileID: 1800837295739870105}
   _fireCD: 0
-  _fireRate: 2
+  _fireRate: 3
   _beamHit: 0
   _onScreen: 0
   _dying: 0
