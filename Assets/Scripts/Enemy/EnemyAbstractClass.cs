@@ -51,6 +51,7 @@ public abstract class EnemyAbstractClass : MonoBehaviour
     protected virtual void Update()
     {
         //Most movement will be made in animation.
+        OnScreenCheck();
     }
 
     protected virtual void Movement()

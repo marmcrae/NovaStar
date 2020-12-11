@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4221743648848214201}
   - component: {fileID: 4221743648848214200}
   - component: {fileID: 4221743648848214144}
-  - component: {fileID: 4221743648848214151}
   - component: {fileID: 4221743648848214150}
+  - component: {fileID: 8757469828900812405}
+  - component: {fileID: -1550823475508340949}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -139,20 +140,6 @@ MonoBehaviour:
   _willFire: -1
   _weaponPowerUpID: 0
   _weaponCurrentlyOn: 0
---- !u!114 &4221743648848214151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4221743649193759134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38701c2d7a4b95c488cce1e4bea70d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  maximumHealth: 1
 --- !u!114 &4221743648848214150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +156,32 @@ MonoBehaviour:
   _rotSpeed: 5
   _posTarget: {fileID: 0}
   _rotTarget: {fileID: 0}
+--- !u!114 &8757469828900812405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221743649193759134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b57e45a8f583b4bbb8a30ae58f8a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1550823475508340949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221743649193759134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb344d56e24650342afee01f8d5c5181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maximumHealth: 1
 --- !u!1001 &2500564441248882274
 PrefabInstance:
   m_ObjectHideFlags: 0
