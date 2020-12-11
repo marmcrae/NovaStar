@@ -62,20 +62,20 @@ MonoBehaviour:
     rate: 0.5
   - name: 4
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
     count: 8
     rate: 0.5
   - name: 5
     enemy:
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
     count: 10
     rate: 0.5
   - name: 6
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
     count: 12
     rate: 0.5
   - name: Midboss
@@ -85,35 +85,37 @@ MonoBehaviour:
     rate: 0.5
   - name: 8
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
     count: 5
     rate: 0.5
   - name: 9
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
     count: 8
     rate: 0.5
   - name: 10
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
     count: 10
     rate: 0.5
   - name: 11
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
     count: 12
     rate: 0.5
   - name: 12
     enemy:
-    - {fileID: 0}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
     count: 5
     rate: 0.5
   - name: 2LargeShips
@@ -123,26 +125,26 @@ MonoBehaviour:
     rate: 0.5
   - name: 14
     enemy:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 5925815399817429637, guid: 69ad86e43afd6e14caf1537e71648a57, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
     count: 8
     rate: 0.5
   - name: 15
     enemy:
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 5925815399817429637, guid: 69ad86e43afd6e14caf1537e71648a57, type: 3}
     count: 10
     rate: 0.5
   - name: 16
     enemy:
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
-    - {fileID: 8230033380339205170, guid: 2f7490f4557c2fb4abf4b27be91707e4, type: 3}
+    - {fileID: 5925815399817429637, guid: 69ad86e43afd6e14caf1537e71648a57, type: 3}
+    - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
+    - {fileID: 1800837295739870105, guid: 87a1f60010901c641b0aa3202f22198d, type: 3}
+    - {fileID: 5167587606890951083, guid: 82eefdbcb075da644adeb436ba025441, type: 3}
     count: 12
     rate: 0.5
   - name: FinalBoss
