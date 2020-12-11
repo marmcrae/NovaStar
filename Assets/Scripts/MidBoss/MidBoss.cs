@@ -5,7 +5,7 @@ using UnityEngine;
 public class MidBoss : MonoBehaviour
 {
     [SerializeField]
-    private int _health = 50;
+    private float _health = 50;
     [SerializeField]
     private float _speed = 5.0f;
     private Vector3 _targetPosition;
@@ -94,7 +94,7 @@ public class MidBoss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player_Projectile"))
+        if(other.CompareTag("Player"))
         {
             _health--;
             if (_health <= 0 && !_isDead)
@@ -112,6 +112,26 @@ public class MidBoss : MonoBehaviour
             {
                 _smoke1.SetActive(true);
             }
+        }
+    }
+
+    private void Damage(float _damage)
+    {
+        _health -= _damage;
+        if (_health <= 0 && !_isDead)
+        {
+            _isDead = true;
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.5f);
+        }
+        else if (_health <= 25)
+        {
+            _phase = 2;
+            _smoke2.SetActive(true);
+        }
+        else if (_health <= 30)
+        {
+            _smoke1.SetActive(true);
         }
     }
 }

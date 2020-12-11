@@ -20,4 +20,13 @@ public class Bomb : MonoBehaviour
     {
         _rb.velocity = transform.forward * _speed;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+            Destroy(gameObject);
+        }
+    }
 }
