@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
         public Transform[] enemy;
         public int count;
         public float rate;
+        public GameObject _waveAnim;
     }
     public Wave[] waves;
     public Transform[] spawnPoints;
@@ -29,6 +30,7 @@ public class SpawnManager : MonoBehaviour
     private float waveCountdown;
     private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
+
 
     void Start()
     {
@@ -103,12 +105,13 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnWave(Wave _wave)
     {
         state = SpawnState.SPAWNING;
+        SpawnWaveAnim(_wave);
 
         for (int i = 0; i < _wave.count; i++)
         {
-            _wave.rate = Random.Range(1f, 2.5f);
+            var _randRate = Random.Range(_wave.rate, _wave.rate * 1.5f);
             SpawnEnemy(_wave.enemy[Random.Range(0, _wave.enemy.Length)]);
-            yield return new WaitForSeconds(_wave.rate);
+            yield return new WaitForSeconds(_randRate);
         }
         state = SpawnState.WAITING;
         yield break;
@@ -118,5 +121,15 @@ public class SpawnManager : MonoBehaviour
     {
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
+    }
+
+    //spawn animation
+    void SpawnWaveAnim(Wave _wave)
+    {
+        if (_wave._waveAnim != null)
+        {
+            Vector3 _animPos = new Vector3(0f, 0f, 0f);
+            Instantiate(_wave._waveAnim, _animPos, Quaternion.identity);
+        }
     }
 }
