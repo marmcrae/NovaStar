@@ -1,13 +1,15 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // wave 7 mid tier boss
+    private bool _stopSpawning = false;
+    [SerializeField] private GameObject _enemyContainer;
 
-    // [SerializeField] private GameObject _enemyContainer;
     // credit to Brackeys start
+    private enum SpawnState { SPAWNING, WAITING, COUNTING }
+
     // Serialized Fields start 
     [System.Serializable]
     public class Wave
@@ -16,17 +18,18 @@ public class SpawnManager : MonoBehaviour
         public Transform[] enemy;
         public int count;
         public float rate;
+        public GameObject _waveAnim;
     }
     public Wave[] waves;
     public Transform[] spawnPoints;
     public float timeBetweenWaves = 5f;
     //Serialized Fields end 
-    private enum SpawnState { SPAWNING, WAITING, COUNTING }
-    private SpawnState state = SpawnState.COUNTING;
+
+    [SerializeField]
     private int nextWave = 0;
     private float waveCountdown;
     private float searchCountdown = 1f;
-    private bool _stopSpawning = false;
+    private SpawnState state = SpawnState.COUNTING;
     private bool _checkpointReached = false;
     private bool _playerDied = false;
     private GameObject[] objectsToDestroy;
@@ -34,10 +37,9 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.Find("Player");
         if (spawnPoints.Length <= 0)
         {
-            Debug.LogError("No spawnPoints found");
+            Debug.LogError("No SpawnPoints found");
         }
         waveCountdown = timeBetweenWaves;
     }
@@ -52,7 +54,6 @@ public class SpawnManager : MonoBehaviour
             _player.SetActive(true);
             _player.transform.position = new Vector3(-20,0,0);
         }
-
 
         if (!_stopSpawning)
         {
@@ -83,19 +84,14 @@ public class SpawnManager : MonoBehaviour
     }
     void WaveCompleted()
     {
-        Debug.Log("Wave Completed " + nextWave);
+        Debug.Log("Wave Completed" + nextWave);
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
-
-        if (nextWave >= 7)
-        {
-            _checkpointReached = true;
-        }
 
         if (nextWave + 1 > waves.Length - 1)
         {
             //nextWave = 0;
-            Debug.Log("End");
+            Debug.Log("loop");
             _stopSpawning = true;
         }
 
@@ -121,11 +117,13 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnWave(Wave _wave)
     {
         state = SpawnState.SPAWNING;
+        SpawnWaveAnim(_wave);
 
         for (int i = 0; i < _wave.count; i++)
         {
+            var _randRate = Random.Range(_wave.rate, _wave.rate * 1.5f);
             SpawnEnemy(_wave.enemy[Random.Range(0, _wave.enemy.Length)]);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            yield return new WaitForSeconds(_randRate);
         }
         state = SpawnState.WAITING;
         yield break;
@@ -137,13 +135,22 @@ public class SpawnManager : MonoBehaviour
         Instantiate(_enemy, _sp.position, _sp.rotation);
     }
 
+    //spawn animation
+    void SpawnWaveAnim(Wave _wave)
+    {
+        if (_wave._waveAnim != null)
+        {
+            Vector3 _animPos = new Vector3(0f, 0f, 0f);
+            Instantiate(_wave._waveAnim, _animPos, Quaternion.identity);
+        }
+    }
+
     public void SetStatus()
     {
         _playerDied = true;
         _stopSpawning = true;
         DestroyAllObjects();
     }
-
     public bool GetCheckPointStatus()
     {
         return _checkpointReached;

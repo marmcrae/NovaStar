@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AggressiveEnemy : EnemyAbstractClass
 {
-    //Flash Red to indicate Aggressive
-    //Creates shield when charging
-
-    //charge
     //controls the distance enemy begins charge
     [SerializeField] private float _distCharge = 15.0f;
     [SerializeField] private Transform _target;
@@ -23,17 +19,29 @@ public class AggressiveEnemy : EnemyAbstractClass
     [SerializeField] private Transform _rotTarget;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         _speed = 50.0f;
-        _hp = 2f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        Charge();
-        WrapAround();
+        base.Update();
+        if (_target != null)
+        {
+            Charge();
+            WrapAround();
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * 20f * Time.deltaTime);
+        }       
     }
     private void Charge()
     {
@@ -54,8 +62,8 @@ public class AggressiveEnemy : EnemyAbstractClass
                 transform.rotation = Quaternion.Lerp(transform.rotation, _rotTarget.rotation, Time.deltaTime * 5f);
             }
             else
-            {
-                transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+            {            
+                transform.Translate(Vector3.forward * _speed * Time.deltaTime);             
             }
         }
     }
