@@ -177,25 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 0
-<<<<<<< HEAD
---- !u!114 &6693800679505678094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867456948297910715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb344d56e24650342afee01f8d5c5181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  maximumHealth: 1
-  _explosionAnim: {fileID: 7919869171319994501, guid: 855111d5bb81b6b4c99b9a8af6120ee8,
-    type: 3}
-=======
->>>>>>> 5fdc7c97d156443510a118355cfe172ad722c4af
 --- !u!114 &3935994361380357683
 MonoBehaviour:
   m_ObjectHideFlags: 0
