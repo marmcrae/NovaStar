@@ -32,7 +32,7 @@ GameObject:
   - component: {fileID: 814231903743009598}
   m_Layer: 0
   m_Name: Aggressive_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7234998086647328918}
-  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 26.208, y: 4.07, z: 0}
   m_LocalScale: {x: 0.4746771, y: 0.4746771, z: 0.4746771}
   m_Children:
@@ -140,13 +140,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f86dea83c2ad444bf3e1c7f9fb7978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
+  _hp: 1
   _speed: 2
+  _points: 100
+  _explosionScale: 1
+  _player: {fileID: 0}
+  _playerScore: {fileID: 0}
+  _explosionAnim: {fileID: 4839354891253967877, guid: 4f15e8b249fbf374ca6c7b13f70f26f3,
+    type: 3}
   _enemyWeapon: {fileID: 0}
+  _powerUpPrefab: {fileID: 2859580197701695813, guid: adf28ba5baf00514e87a2418740a8214,
+    type: 3}
   _weaponPos: {fileID: 0}
   _fireCD: 0
   _fireRate: 2
   _beamHit: 0
+  _onScreen: 0
+  _dying: 0
   _iFrameTime: 0
   _beamDamage: 1
   _distCharge: 15
