@@ -32,7 +32,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ///PlayerDamageTest();
+
     }
 
 
@@ -40,6 +40,7 @@ public class PlayerHealthAndDamage : MonoBehaviour
     {
         health -= .5f;
         _playerWeapon._weaponPowerLevel = 0;
+        _playerWeapon.UpdateWeaponLevel();
 
         if (health <= 0)
         {

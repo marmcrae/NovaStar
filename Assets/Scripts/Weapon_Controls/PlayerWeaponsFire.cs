@@ -160,68 +160,23 @@ public class PlayerWeaponsFire : MonoBehaviour
         if (other.tag == "PowerUp")
         {
             Destroy(other.gameObject);
-            Debug.Log("I see you...... and you are on weapon level: " + _weaponPowerLevel);
            
             PlayerHealthAndDamage playerHealth = GameObject.Find("Player").GetComponent<PlayerHealthAndDamage>();
             if (_weaponPowerLevel < _totalWepCount)
             {
                 _weaponPowerLevel++;
                 UpdateWeaponLevel();
-                Debug.Log("In if statement and you are on weapon level: " + _weaponPowerLevel);
             }
-
-
-
             playerHealth.health = playerHealth.maximumHealth;
-           
-
-
-            switch (_weaponPowerLevel)
-            {
-
-                case 0:
-                    _weaponCurrentlyOn = CurrentWeapon.FirstWeapon;
-                    _weaponLevelString[0] = "LEVEL 1: FIREBALL";
-                    break;
-
-                case 1:
-                    _weaponCurrentlyOn = CurrentWeapon.SecondWeapon;
-                    _weaponLevelString[1] = "LEVEL 2: DOUBLE FIREBALL";
-                    break;
-
-                case 2:
-                    _weaponCurrentlyOn = CurrentWeapon.ThirdWeapon;
-                    _weaponLevelString[2] = "LEVEL 3: TRIPLE FIREBALL";
-                    break;
-
-                case 3:
-                    _weaponCurrentlyOn = CurrentWeapon.FourthWeapon;
-                    _weaponLevelString[3] = "LEVEL 4: WAVE";
-                    break;
-
-                case 4:
-                    _weaponCurrentlyOn = CurrentWeapon.FifthWeapon;
-                    _weaponLevelString[4] = "LEVEL 5: BIG FIREBALL";
-                    break;
-
-                case 5:
-                    _weaponCurrentlyOn = CurrentWeapon.SixthWeapon;
-                    _weaponLevelString[5] = "LEVEL 6: LASER";
-                    break;
-
-                default:
-                    Debug.Log("Invalid ID!");
-                    break;
-            }
+            SwitchPowerUp();
             
         }
     }
 
-    private void UpdateWeaponLevel()
+    public void UpdateWeaponLevel()
     {
         _weaponUI.UpdateWeaponLevel(_weaponLevelString[_weaponPowerLevel]);
-        Debug.Log("They called me... yay!");
-
+        SwitchPowerUp();
     }
 
     IEnumerator LaserTimer()
@@ -251,5 +206,48 @@ public class PlayerWeaponsFire : MonoBehaviour
         }
 
         _canShoot = true;
+    }
+
+    public void SwitchPowerUp()
+    {
+        switch (_weaponPowerLevel)
+        {
+
+            case 0:
+                _weaponCurrentlyOn = CurrentWeapon.FirstWeapon;
+                _weaponLevelString[0] = "LEVEL 1: FIREBALL";
+                break;
+
+            case 1:
+                _weaponCurrentlyOn = CurrentWeapon.SecondWeapon;
+                _weaponLevelString[1] = "LEVEL 2: DOUBLE FIREBALL";
+                break;
+
+            case 2:
+                _weaponCurrentlyOn = CurrentWeapon.ThirdWeapon;
+                _weaponLevelString[2] = "LEVEL 3: TRIPLE FIREBALL";
+                break;
+
+            case 3:
+                _weaponCurrentlyOn = CurrentWeapon.FourthWeapon;
+                _weaponLevelString[3] = "LEVEL 4: WAVE";
+                break;
+
+            case 4:
+                _weaponCurrentlyOn = CurrentWeapon.FifthWeapon;
+                _weaponLevelString[4] = "LEVEL 5: BIG FIREBALL";
+                break;
+
+            case 5:
+                _weaponCurrentlyOn = CurrentWeapon.SixthWeapon;
+                _weaponLevelString[5] = "LEVEL 6: LASER";
+                break;
+
+            default:
+                Debug.Log("Invalid ID!");
+                break;
+        }
+
+
     }
 }
