@@ -10,6 +10,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
     [SerializeField]
     public float maximumHealth = 1;
 
+    [SerializeField]
+    private GameObject _explosionAnim;
+
     private PlayerWeaponsFire _playerWeapon;
 
     private void Start()
@@ -32,11 +35,13 @@ public class PlayerHealthAndDamage : MonoBehaviour
     public void PlayerDamage()
     {
         health -= .5f;
-        _playerWeapon._weaponPowerUpID = 0;
+        _playerWeapon._weaponPowerLevel = 0;
 
         if (health <= 0)
         {
+            Instantiate(_explosionAnim, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+           
         }
     }
 

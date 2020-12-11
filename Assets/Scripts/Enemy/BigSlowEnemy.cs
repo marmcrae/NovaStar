@@ -24,7 +24,7 @@ public class BigSlowEnemy : EnemyAbstractClass
     // Start is called before the first frame update
     void Start()
     {
-        _hp = 100f;
+        _hp = 50f;
         Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
     }
 
