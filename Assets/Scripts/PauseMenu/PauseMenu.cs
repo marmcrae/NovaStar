@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PauseMenu : MonoBehaviour
     private AudioMixer _audioMixer;
     [SerializeField]
     private Image _brightness;
+    [SerializeField]
+    private GameObject _pauseMenu;
+    private bool _paused;
 
     private void Start()
     {
@@ -23,15 +27,18 @@ public class PauseMenu : MonoBehaviour
         _savedVolume = PlayerPrefs.GetFloat("Volume");
         _savedBrightness = PlayerPrefs.GetFloat("Brightness");
         UpdateSliders();
+
+        if (_brightness == null)
+        {
+            Debug.LogError("The BrightnessManager is NULL.");
+        }
     }
-    private void OnEnable()
+
+    private void Update()
     {
-        Time.timeScale = 0;
+        PauseGame();
     }
-    private void OnDisable()
-    {
-        Time.timeScale = 1;
-    }
+
     private void UpdateSliders()
     {
         _savedVolume = PlayerPrefs.GetFloat("Volume");
@@ -56,5 +63,37 @@ public class PauseMenu : MonoBehaviour
         _brightness.color = new Color(255, 255, 255, brightness);
         PlayerPrefs.SetFloat("Brightness", brightness);
         PlayerPrefs.Save();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ResumeGame()
+    {
+        _pauseMenu.SetActive(false);
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_paused == false)
+            {
+                _pauseMenu.SetActive(true);
+                _paused = true;
+            }
+            else if (_paused == true)
+            {
+                _pauseMenu.SetActive(false);
+                _paused = false;
+            }
+        }
     }
 }

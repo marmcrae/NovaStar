@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _endPanel;
+    [SerializeField] 
+    private GameObject _endPanel;
     private Button _checkPointButton;
     private PlayerHealthAndDamage _player;
     private SpawnManager _spawnManager;

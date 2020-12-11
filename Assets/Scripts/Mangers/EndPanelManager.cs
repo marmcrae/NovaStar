@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndPanelManager : MonoBehaviour
 {
-    private GameObject _endPanel;
+
     private SpawnManager _spawnManager;
+    [SerializeField]
+    private GameObject _endPanel;
    void Start()
    {
-        _endPanel = GameObject.Find("End_Panel");
         _endPanel.SetActive(false);
         if(_endPanel == null)
         {
@@ -24,10 +26,7 @@ public class EndPanelManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
+
     }
 
     public void LoadLevel()
