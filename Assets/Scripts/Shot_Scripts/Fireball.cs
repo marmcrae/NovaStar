@@ -101,7 +101,6 @@ public class Fireball : MonoBehaviour
                     explosion.gameObject.GetComponent<ExplosionAnim>()._sfxSource = _hitSfxsource;
                     explosion.gameObject.GetComponent<ExplosionAnim>()._volume = _hitVolume;
 
-
                 }
                
             }
