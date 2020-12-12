@@ -65,12 +65,11 @@ public class FinalBoss : MonoBehaviour
         _curHp = _maxHp;
         transform.Rotate(new Vector3(0, 270, 0));
         _anim = GetComponent<Animator>();
+
         if (_anim == null)
         {
             Debug.LogError("No Anim");
         }
-
-        _randDirection = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -87,11 +86,8 @@ public class FinalBoss : MonoBehaviour
         //if second phase abil not active then standard movement
         if (_p2Active == false)
         {
-            //_anim.enabled = false;
-            //StandardMovement();
             if (_activateP2 == true)
             {
-                //change color, can create coroutine to start color flash to indicate charge
                 //run through initial coroutine only once
                 if (_initialP2 == true)
                 {
@@ -109,47 +105,12 @@ public class FinalBoss : MonoBehaviour
         //else stop standard movement, enable second phase movement
         else if (_p2Active == true)
         {
-            _anim.enabled = true;
             SecondPhaseAbility();
         }
         P1MiniLaser();
         P1Ability();
         P1NormalLaser();
         P2BombDrop();
-    }
-    private void StandardMovement()
-    {
-        //Boss moves up and down on y axis randomly      
-        if (_randDirection == 0 && transform.position.y <= 15.0f)
-        {
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-        }
-        else
-        {
-            _randDirection = 1;
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        }
-        if (_randDirection == 1 && transform.position.y >= -15.0f)
-        {
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        }
-        else
-        {
-            _randDirection = 0;
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-        }
-        if (_newDirection == false)
-        {
-            _newDirection = true;
-            StartCoroutine(RandomDirection());
-        }
-    }
-    IEnumerator RandomDirection()
-    {   
-        //Sets Random enemy direction towards point a or point b
-        yield return new WaitForSeconds(Random.Range(2.5f, 5.0f));
-        _randDirection = Random.Range(0, 2);
-        _newDirection = false;
     }
     private void SecondPhaseAbility()
     {
@@ -192,7 +153,7 @@ public class FinalBoss : MonoBehaviour
     {
         //activate laser bomb
         //deactivate when finished
-        if (_p2Active == false)
+        if (_p2Active == false && _anim.GetCurrentAnimatorStateInfo(0).IsTag("2"))
         {
             _laserBombRate = Random.Range(5.0f, 10.0f);
             if (Time.time > _laserBombCD)
@@ -204,7 +165,7 @@ public class FinalBoss : MonoBehaviour
     }
     private void P1MiniLaser()
     {
-        if (_p2Active == false)
+        if (_p2Active == false && _anim.GetCurrentAnimatorStateInfo(0).IsTag("2"))
         {
             _miniLaserFireRate = Random.Range(3.0f, 6.0f);
             if (Time.time > _miniLaserCD)
@@ -218,7 +179,7 @@ public class FinalBoss : MonoBehaviour
     {
         //cd of 10 - 15 secs
         //if p2Active false
-        if (_p2Active == false)
+        if (_p2Active == false && _anim.GetCurrentAnimatorStateInfo(0).IsTag("2"))
         {
             _normLaserFireRate = Random.Range(10.0f, 15.0f);
             if (Time.time > _normLaserCD)
