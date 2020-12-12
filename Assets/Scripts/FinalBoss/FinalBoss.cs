@@ -71,7 +71,6 @@ public class FinalBoss : MonoBehaviour
             Debug.LogError("No Anim");
         }
     }
-
     // Update is called once per frame
     void Update()
     {
