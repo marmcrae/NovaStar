@@ -51,6 +51,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9213923430128120643}
     m_Modifications:
+    - target: {fileID: 3649050722857703643, guid: 1a341dbc02952a2459512eae3628cb08,
+        type: 3}
+      propertyPath: _explosionPrefab
+      value: 
+      objectReference: {fileID: 4839354891253967877, guid: 4f15e8b249fbf374ca6c7b13f70f26f3,
+        type: 3}
     - target: {fileID: 3649050723600265515, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: m_Name
@@ -69,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 3649050723600362763, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 3649050723600362763, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
