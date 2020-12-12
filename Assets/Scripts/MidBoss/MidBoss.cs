@@ -28,6 +28,22 @@ public class MidBoss : MonoBehaviour
     private GameObject _explosionPrefab;
     private bool _isDead = false;
 
+    [SerializeField]
+    private AudioClip _fightMusicSource;
+
+    [SerializeField]
+    private AudioClip _endMusicSource;
+
+
+    [SerializeField]
+    private float _musicVolume = 1.0f;
+
+    [SerializeField] private AudioClip _explosionSound;
+    [SerializeField] private float _explosionVol;
+    [SerializeField] protected float _explosionScale = 1.0f;
+
+    [SerializeField] protected GameObject _powerUpPrefab;
+
     [SerializeField] protected bool _beamHit;
     [SerializeField] protected float _iFrameTime = 0.2f;
     [SerializeField] protected float _beamDamage = 1.0f;
@@ -35,6 +51,8 @@ public class MidBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.PlayMusic(_fightMusicSource, _musicVolume);
+
         _targetPosition = new Vector3(19f, 0f, 0f);
         _turret1.SetActive(true);
         _turret2.SetActive(true);
@@ -46,22 +64,7 @@ public class MidBoss : MonoBehaviour
     void Update()
     {
         Movement();
-        if (_health <= 0 && !_isDead)
-        {
-            _isDead = true;
-            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject, 0.5f);
-        }
-        else if (_health <= 25)
-        {
-            _phase = 2;
-            _smoke2.SetActive(true);
-        }
-        else if (_health <= 30)
-        {
-            _smoke1.SetActive(true);
-        }
-
+        
         if (_phase == 1)
         {
             FireBullet();
@@ -116,7 +119,24 @@ public class MidBoss : MonoBehaviour
         if (_health <= 0 && !_isDead)
         {
             _isDead = true;
-            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            //Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+
+            if (_explosionPrefab != null)
+            {
+                Debug.Log("Explosion");
+
+                GameObject explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+
+                explosion.gameObject.GetComponent<ExplosionAnim>()._sfxSource = _explosionSound;
+                explosion.gameObject.GetComponent<ExplosionAnim>()._volume = _explosionVol;
+
+                explosion.transform.localScale = new Vector3(_explosionScale, _explosionScale, _explosionScale);
+
+            }
+
+            AudioManager.Instance.PlayMusic(_endMusicSource, _musicVolume);
+
+            PowerUp();
             Destroy(gameObject, 0.5f);
         }
         else if (_health <= 25)
@@ -146,6 +166,24 @@ public class MidBoss : MonoBehaviour
             }
         }
     }
+
+    private void PowerUp()
+    {
+
+        float randomPos = Random.Range(0, 4);
+        Vector3 newPosition = new Vector3(transform.position.x+ randomPos, transform.position.y+ randomPos, transform.position.z);
+        Instantiate(_powerUpPrefab, newPosition, Quaternion.identity);
+
+        randomPos = Random.Range(0, 4);
+        newPosition = new Vector3(transform.position.x + randomPos, transform.position.y + randomPos, transform.position.z);
+        Instantiate(_powerUpPrefab, newPosition, Quaternion.identity);
+
+        randomPos = Random.Range(0, 4);
+        newPosition = new Vector3(transform.position.x + randomPos, transform.position.y + randomPos, transform.position.z);
+        Instantiate(_powerUpPrefab, newPosition, Quaternion.identity);
+    }
+
+
 
     IEnumerator HitTimer()
     {

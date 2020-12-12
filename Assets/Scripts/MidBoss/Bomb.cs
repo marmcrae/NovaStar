@@ -8,8 +8,27 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
+    [SerializeField]
+    private float _hitVolume = 1.0f;
+
+    [SerializeField]
+    private float _fireVolume = 1.0f;
+
+    [SerializeField] protected GameObject _explosionAnim;
+
+    [SerializeField]
+    private AudioClip _sfxSource;
+
+    [SerializeField]
+    private AudioClip _hitSfxsource;
+
     private void Start()
     {
+        if (_sfxSource != null)
+        {
+            AudioManager.Instance.PlayEffect(_sfxSource, _fireVolume);
+        }
+
         transform.Rotate(0f, 270f, 0);
     }
     private void FixedUpdate()
@@ -34,6 +53,16 @@ public class Bomb : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+
+            if (_explosionAnim != null)
+            {
+
+                GameObject explosion = Instantiate(_explosionAnim, transform.position, Quaternion.identity);
+                explosion.gameObject.GetComponent<ExplosionAnim>()._sfxSource = _hitSfxsource;
+                explosion.gameObject.GetComponent<ExplosionAnim>()._volume = _hitVolume;
+
+            }
+
             Destroy(gameObject);
         }
     }
