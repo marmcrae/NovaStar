@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _endPanel;
+    [SerializeField] 
+    private GameObject _endPanel;
     private Button _checkPointButton;
     private PlayerHealthAndDamage _player;
     private SpawnManager _spawnManager;
     private Text _winText;
     private Text _diedText;
+    private bool _playerDead;
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<PlayerHealthAndDamage>();
@@ -41,6 +43,7 @@ public class CanvasManager : MonoBehaviour
         if (!_player.getPlayerStatus())
         {
             _endPanel.SetActive(true);
+            _playerDead = true;
             _diedText = GameObject.Find("Died_Text").GetComponent<Text>();
             _diedText.enabled = true;
             if (_spawnManager.GetCheckPointStatus())
@@ -57,7 +60,7 @@ public class CanvasManager : MonoBehaviour
 
     void CheckWinStatus()
     {
-        if (_spawnManager.DidWin())
+        if (_spawnManager.DidWin()  && _playerDead == false)
         {
             _endPanel.SetActive(true);
             _winText = GameObject.Find("Win_Text").GetComponent<Text>();

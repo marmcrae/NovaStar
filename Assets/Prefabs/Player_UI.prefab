@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 867456948504797341}
   - component: {fileID: 867456948504797349}
   - component: {fileID: 867456948504797347}
-  - component: {fileID: 3935994361380357683}
+  - component: {fileID: 5699233231926996560}
   - component: {fileID: 3935994361380357682}
   m_Layer: 0
   m_Name: Player_UI
@@ -163,7 +163,7 @@ MonoBehaviour:
   _rotSpeed: 5
   _posTarget: {fileID: 0}
   _rotTarget: {fileID: 0}
---- !u!114 &3935994361380357683
+--- !u!114 &5699233231926996560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

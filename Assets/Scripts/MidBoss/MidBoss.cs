@@ -5,7 +5,7 @@ using UnityEngine;
 public class MidBoss : MonoBehaviour
 {
     [SerializeField]
-    private int _health = 50;
+    private float _health = 50;
     [SerializeField]
     private float _speed = 5.0f;
     private Vector3 _targetPosition;
@@ -14,7 +14,7 @@ public class MidBoss : MonoBehaviour
     [SerializeField]
     private GameObject _bombPlacement;
     private float _nextFire = 0f;
-    private float _fireRate = 1f;
+    private float _fireRate = 5f;
     [SerializeField]
     private int _phase = 1;
     [SerializeField]
@@ -27,6 +27,11 @@ public class MidBoss : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab;
     private bool _isDead = false;
+
+    [SerializeField] protected bool _beamHit;
+    [SerializeField] protected float _iFrameTime = 0.2f;
+    [SerializeField] protected float _beamDamage = 1.0f;
+    protected float _hitTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,24 +99,57 @@ public class MidBoss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player_Projectile"))
+        if(other.CompareTag("Player"))
         {
-            _health--;
-            if (_health <= 0 && !_isDead)
+            Damage(1f);
+        }
+        if(other.CompareTag("Fireball"))
+        {
+            Damage(1f);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void Damage(float _damage)
+    {
+        _health -= _damage;
+        if (_health <= 0 && !_isDead)
+        {
+            _isDead = true;
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.5f);
+        }
+        else if (_health <= 25)
+        {
+            _phase = 2;
+            _smoke2.SetActive(true);
+        }
+        else if (_health <= 30)
+        {
+            _smoke1.SetActive(true);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //Beam Collision
+        if (other.CompareTag("Beam"))
+        {
+            Debug.Log("Hit detected");
+            if (_beamHit != true)
             {
-                _isDead = true;
-                Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject, 0.5f);
-            }
-            else if (_health <= 25)
-            {
-                _phase = 2;
-                _smoke2.SetActive(true);
-            }
-            else if(_health <= 30)
-            {
-                _smoke1.SetActive(true);
+                Debug.Log("Damage Dealt");
+                Damage(_beamDamage);
+                _hitTime = Time.time;
+                _beamHit = true;
+                StartCoroutine(HitTimer());
             }
         }
+    }
+
+    IEnumerator HitTimer()
+    {
+        yield return new WaitForSeconds(_iFrameTime);
+        _beamHit = false;
     }
 }
