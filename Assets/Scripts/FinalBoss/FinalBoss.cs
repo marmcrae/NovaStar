@@ -53,8 +53,10 @@ public class FinalBoss : MonoBehaviour
     private float _bombFireRate;
 
     private Animator _anim;
-    [SerializeField]
-    private GameObject _explosionPrefab;
+    [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private GameObject _smoke1;
+    [SerializeField] private GameObject _smoke2;
+
 
     //basic fire
 
@@ -81,6 +83,11 @@ public class FinalBoss : MonoBehaviour
             _initialP2 = true;
             //stops this if statement from being checked to prevent activate bool being set to true
             _stopHpCheck = true;
+            _smoke1.SetActive(true);
+        }
+        if (_curHp <= _maxHp * .25)
+        {
+            _smoke2.SetActive(true);
         }
         //if second phase abil not active then standard movement
         if (_p2Active == false)

@@ -572,6 +572,7 @@ MonoBehaviour:
   _bombPrefab: {fileID: 939611514574070289, guid: e7bcbaf624526c243a6e5e85d1b11c3d,
     type: 3}
   _curBombSpawn: {fileID: 0}
+  _explosionPrefab: {fileID: 0}
 --- !u!1 &3649050723638820978
 GameObject:
   m_ObjectHideFlags: 0
