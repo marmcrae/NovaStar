@@ -53,7 +53,9 @@ public class FinalBoss : MonoBehaviour
     private float _bombFireRate;
 
     private Animator _anim;
- 
+    [SerializeField]
+    private GameObject _explosionPrefab;
+
     //basic fire
 
     // Start is called before the first frame update
@@ -85,8 +87,8 @@ public class FinalBoss : MonoBehaviour
         //if second phase abil not active then standard movement
         if (_p2Active == false)
         {
-            _anim.enabled = false;
-            StandardMovement();
+            //_anim.enabled = false;
+            //StandardMovement();
             if (_activateP2 == true)
             {
                 //change color, can create coroutine to start color flash to indicate charge
@@ -114,11 +116,6 @@ public class FinalBoss : MonoBehaviour
         P1Ability();
         P1NormalLaser();
         P2BombDrop();
-    }
-    private void BossEntrance()
-    {
-        //entrance pattern
-        //boss moves onto screen and rotates to face the player
     }
     private void StandardMovement()
     {
@@ -277,5 +274,10 @@ public class FinalBoss : MonoBehaviour
     private void Damage(float _damage)
     {
         _curHp -= _damage;
+        if (_curHp <= 0f)
+        {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.5f);
+        }       
     }
 }

@@ -173,10 +173,10 @@ MonoBehaviour:
     - {fileID: 5925815399817429637, guid: 69ad86e43afd6e14caf1537e71648a57, type: 3}
     count: 15
     rate: 5
-    _waveAnim: {fileID: 3649050723600265515, guid: 1a341dbc02952a2459512eae3628cb08,
+    _waveAnim: {fileID: 8126645068013010188, guid: 4e796615ac2647a4b9554dda7354a44b,
       type: 3}
   spawnPoints:
   - {fileID: 0}
   timeBetweenWaves: 5
-  nextWave: 0
+  nextWave: 16
   _checkpointReached: 0
