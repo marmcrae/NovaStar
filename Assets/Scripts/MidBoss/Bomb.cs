@@ -15,6 +15,14 @@ public class Bomb : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        if (transform.position.x > 40 || transform.position.x < -40)
+        {
+            Destroy(this.gameObject);
+        }
+        if (transform.position.y > 20 || transform.position.y < -20)
+        {
+            Destroy(this.gameObject);
+        }
     }
     public void Movement()
     {

@@ -19,6 +19,15 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(_dir * _speed * Time.deltaTime);
+
+        if(transform.position.x > 40 || transform.position.x < -40)
+        {
+            Destroy(this.gameObject);
+        }
+        if (transform.position.y > 20 || transform.position.y < -20)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void SetDirection(Vector3 dir)
@@ -30,6 +39,8 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {

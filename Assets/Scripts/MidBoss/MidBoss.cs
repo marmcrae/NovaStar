@@ -108,7 +108,6 @@ public class MidBoss : MonoBehaviour
             Damage(1f);
             Destroy(other.gameObject);
         }
-        
     }
 
     private void Damage(float _damage)
