@@ -89,6 +89,8 @@ public abstract class EnemyAbstractClass : MonoBehaviour
             _playerScore.AddScore(_points);
             Debug.Log("Enemy Destroyed");
 
+            PowerUp();
+
             if (_explosionAnim != null)
             {
                 Debug.Log("Explosion");

@@ -6631,15 +6631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _optionsMenu: {fileID: 1952384290}
   _audioMixer: {fileID: 24100000, guid: cb710fa7482fd6f419d25a9a52c9c831, type: 2}
-<<<<<<< HEAD
   _menuMusic: {fileID: 8300000, guid: e9a353d09cbb2f14d819aa89ad2f1967, type: 3}
-  _brightness: 0
-=======
-  _menuMusic: {fileID: 8300000, guid: 829d2250132edb440aa5bedc1e03a815, type: 3}
   _brightness: {fileID: 512522002}
   _volumeSlider: {fileID: 189970500}
   _brightnessSlider: {fileID: 2107362309}
->>>>>>> dev
 --- !u!95 &1311696647
 Animator:
   serializedVersion: 3

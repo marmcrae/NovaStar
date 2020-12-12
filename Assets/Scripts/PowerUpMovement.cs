@@ -19,7 +19,7 @@ public class PowerUpMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
 
         if (transform.position.x < -35.0)
         {

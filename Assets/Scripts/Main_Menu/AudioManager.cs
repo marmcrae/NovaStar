@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
     {
         _bgmSource.Stop();
         _bgmSource.clip = music;
+        _bgmSource.volume = volume;
         _bgmSource.loop = true;
         _bgmSource.Play();
     }

@@ -149,7 +149,7 @@ MonoBehaviour:
   _explosionAnim: {fileID: 4839354891253967877, guid: 4f15e8b249fbf374ca6c7b13f70f26f3,
     type: 3}
   _enemyWeapon: {fileID: 0}
-  _powerUpPrefab: {fileID: 4391417300127363874, guid: 0690e0006415d8440914bf555fc36188,
+  _powerUpPrefab: {fileID: 4370765105008833878, guid: 7ee1b55d837403441822ed42260d9fdb,
     type: 3}
   _weaponPos: {fileID: 0}
   _fireCD: 0

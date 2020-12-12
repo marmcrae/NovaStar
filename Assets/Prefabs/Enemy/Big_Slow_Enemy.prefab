@@ -144,16 +144,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d202a16996d9e3c4aba350498ea2b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 25
+  _hp: 10
   _speed: 5
   _points: 500
-  _explosionScale: 1
+  _explosionScale: 5
   _player: {fileID: 0}
   _playerScore: {fileID: 0}
   _explosionAnim: {fileID: 4839354891253967877, guid: 4f15e8b249fbf374ca6c7b13f70f26f3,
     type: 3}
   _enemyWeapon: {fileID: 0}
-  _powerUpPrefab: {fileID: 4391417300127363874, guid: 0690e0006415d8440914bf555fc36188,
+  _powerUpPrefab: {fileID: 4370765105008833878, guid: 7ee1b55d837403441822ed42260d9fdb,
     type: 3}
   _weaponPos: {fileID: 6976760748338407639}
   _fireCD: 0
