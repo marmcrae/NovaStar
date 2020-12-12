@@ -49,7 +49,7 @@ MonoBehaviour:
     enemy:
     - {fileID: 1800837295739870105, guid: a2f2660a1946ad647b701ed9ab9581a2, type: 3}
     count: 5
-    rate: 2
+    rate: 1
     _waveAnim: {fileID: 0}
   - name: Wave 2
     enemy:
@@ -89,7 +89,7 @@ MonoBehaviour:
   - name: Wave 7
     enemy:
     - {fileID: 7090471415415620663, guid: c90285444bab2684c88ce6fa8cdb0c62, type: 3}
-    count: 0
+    count: 1
     rate: 1
     _waveAnim: {fileID: 0}
   - name: Wave 8
@@ -178,5 +178,5 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   timeBetweenWaves: 5
-  nextWave: 16
+  nextWave: 0
   _checkpointReached: 0

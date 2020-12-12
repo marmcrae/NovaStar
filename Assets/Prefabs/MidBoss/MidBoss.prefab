@@ -4834,7 +4834,7 @@ MonoBehaviour:
   _angleStep: -10
   _startStep: -10
   _endStep: 10
-  _speed: 0.2
+  _speed: 1
   _delay: 5
 --- !u!1 &7090471414674125929
 GameObject:
@@ -4886,7 +4886,7 @@ MonoBehaviour:
   _angleStep: 10
   _startStep: 10
   _endStep: -10
-  _speed: 0.5
+  _speed: 1
   _delay: 1
 --- !u!1 &7090471415283468622
 GameObject:
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   _angleStep: -10
   _startStep: -10
   _endStep: 10
-  _speed: 0.5
+  _speed: 1
   _delay: 1
 --- !u!1 &7090471415416051735
 GameObject:
@@ -4960,7 +4960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7090471415415620663
 Transform:
   m_ObjectHideFlags: 0
@@ -5082,6 +5082,9 @@ MonoBehaviour:
   _smoke2: {fileID: 7090471414490786697}
   _explosionPrefab: {fileID: 7571110843994879356, guid: e1df2e50500ab0146b9b8446263eddbb,
     type: 3}
+  _beamHit: 0
+  _iFrameTime: 0.2
+  _beamDamage: 1
 --- !u!1001 &7090471414322171942
 PrefabInstance:
   m_ObjectHideFlags: 0
