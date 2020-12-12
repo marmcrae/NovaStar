@@ -116,7 +116,6 @@ public class FinalBoss : MonoBehaviour
     {
         if (_startP2Move == true)
         {
-            _anim.enabled = true;
             _anim.SetBool("Charge", true);
         }
         if (transform.position.x <= -40.0f)
@@ -125,7 +124,7 @@ public class FinalBoss : MonoBehaviour
             _anim.SetBool("BeamRoutine", true);
             _startP2Move = false;          
         }
-        if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("0") && _startP2Move == false)
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsTag("2") && _startP2Move == false)
         {
             _p2Active = false;
         }
@@ -148,7 +147,6 @@ public class FinalBoss : MonoBehaviour
         _activateP2 = true;
         _startP2Move = true;
     }
-    //lerp eventually
     private void P1Ability()
     {
         //activate laser bomb
