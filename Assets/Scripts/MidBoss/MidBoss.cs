@@ -105,11 +105,19 @@ public class MidBoss : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Damage(1f);
+            if (other != null)
+            {
+                other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+            }
         }
         if(other.CompareTag("Fireball"))
         {
             Damage(1f);
             Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Wave"))
+        {
+            Damage(1f);
         }
     }
 
