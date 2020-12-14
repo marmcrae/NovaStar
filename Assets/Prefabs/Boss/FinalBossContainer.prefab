@@ -51,7 +51,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9213923430128120643}
     m_Modifications:
-<<<<<<< HEAD
     - target: {fileID: 3649050722857703643, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: _explosionPrefab
@@ -68,8 +67,11 @@ PrefabInstance:
       propertyPath: _smoke1
       value: 
       objectReference: {fileID: 1957761279533345041}
-=======
->>>>>>> dev
+    - target: {fileID: 3649050722857703644, guid: 1a341dbc02952a2459512eae3628cb08,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9b0ca205ff558bf4eabe42aa31f5b6d9, type: 2}
     - target: {fileID: 3649050723600265515, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: m_Name

@@ -53,17 +53,11 @@ public class FinalBoss : MonoBehaviour
     private float _bombFireRate;
 
     private Animator _anim;
-<<<<<<< HEAD
+
     [SerializeField] private GameObject _explosionPrefab;
     [SerializeField] private GameObject _smoke1;
     [SerializeField] private GameObject _smoke2;
     private GameObject _explosionPos;
-
-
-=======
- 
->>>>>>> dev
-    //basic fire
 
     // Start is called before the first frame update
     void Start()
@@ -97,11 +91,6 @@ public class FinalBoss : MonoBehaviour
         //if second phase abil not active then standard movement
         if (_p2Active == false)
         {
-<<<<<<< HEAD
-=======
-            _anim.enabled = false;
-            StandardMovement();
->>>>>>> dev
             if (_activateP2 == true)
             {
                 //run through initial coroutine only once
@@ -128,48 +117,6 @@ public class FinalBoss : MonoBehaviour
         P1NormalLaser();
         P2BombDrop();
     }
-<<<<<<< HEAD
-=======
-    private void BossEntrance()
-    {
-        //entrance pattern
-        //boss moves onto screen and rotates to face the player
-    }
-    private void StandardMovement()
-    {
-        //Boss moves up and down on y axis randomly      
-        if (_randDirection == 0 && transform.position.y <= 15.0f)
-        {
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-        }
-        else
-        {
-            _randDirection = 1;
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        }
-        if (_randDirection == 1 && transform.position.y >= -15.0f)
-        {
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        }
-        else
-        {
-            _randDirection = 0;
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-        }
-        if (_newDirection == false)
-        {
-            _newDirection = true;
-            StartCoroutine(RandomDirection());
-        }
-    }
-    IEnumerator RandomDirection()
-    {   
-        //Sets Random enemy direction towards point a or point b
-        yield return new WaitForSeconds(Random.Range(2.5f, 5.0f));
-        _randDirection = Random.Range(0, 2);
-        _newDirection = false;
-    }
->>>>>>> dev
     private void SecondPhaseAbility()
     {
         if (_startP2Move == true)
@@ -290,9 +237,7 @@ public class FinalBoss : MonoBehaviour
 
     private void Damage(float _damage)
     {
-        
         _curHp -= _damage;
-<<<<<<< HEAD
         if (_curHp <= 0f)
         {
             //_explosionPos.transform.position = new Vector3(transform.position.x, transform.position.y, -4.5f);
@@ -300,7 +245,5 @@ public class FinalBoss : MonoBehaviour
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject, 3.0f);
         }       
-=======
->>>>>>> dev
     }
 }
