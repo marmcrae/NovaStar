@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
             return _instance;
         }
     }
-    private void Awake()
+    private void Start()
     {
         _instance = this;
     }
@@ -53,7 +53,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip music, float volume) 
     {
+        _bgmSource.Stop();
         _bgmSource.clip = music;
+        _bgmSource.volume = volume;
         _bgmSource.loop = true;
         _bgmSource.Play();
     }
