@@ -23,14 +23,9 @@ public class EndPanelManager : MonoBehaviour
             Debug.Log("Cant find spawn manager");
         }
     }
-    void Update()
-    {
-
-    }
-
     public void LoadLevel()
     {
-        // Main Scene in GameDevHQ folder
+        // Load the Game Scene
         SceneManager.LoadScene(2);
     }
 
@@ -42,6 +37,7 @@ public class EndPanelManager : MonoBehaviour
 
     public void QuitLevel()
     {
+        // Load the Main Menu Scene
         SceneManager.LoadScene(0);
     }
 }
