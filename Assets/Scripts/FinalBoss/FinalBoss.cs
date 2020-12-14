@@ -57,7 +57,7 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private GameObject _explosionPrefab;
     [SerializeField] private GameObject _smoke1;
     [SerializeField] private GameObject _smoke2;
-    private GameObject _explosionPos;
+    [SerializeField] private GameObject _explosionPos;
 
     // Start is called before the first frame update
     void Start()
@@ -240,9 +240,8 @@ public class FinalBoss : MonoBehaviour
         _curHp -= _damage;
         if (_curHp <= 0f)
         {
-            //_explosionPos.transform.position = new Vector3(transform.position.x, transform.position.y, -4.5f);
             _anim.enabled = false;
-            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Instantiate(_explosionPrefab, _explosionPos.transform.position, Quaternion.identity);
             Destroy(gameObject, 3.0f);
         }       
     }

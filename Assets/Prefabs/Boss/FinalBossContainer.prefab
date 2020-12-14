@@ -44,6 +44,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8270942869542521733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203968051838587736}
+  m_Layer: 0
+  m_Name: Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203968051838587736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270942869542521733}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.48, y: -0.02, z: 0.965}
+  m_LocalScale: {x: 0.28571418, y: 0.28571427, z: 0.28571418}
+  m_Children: []
+  m_Father: {fileID: 6501844639118459301}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7538807028986932398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,11 +97,16 @@ PrefabInstance:
       propertyPath: _smoke1
       value: 
       objectReference: {fileID: 1957761279533345041}
+    - target: {fileID: 3649050722857703643, guid: 1a341dbc02952a2459512eae3628cb08,
+        type: 3}
+      propertyPath: _explosionPos
+      value: 
+      objectReference: {fileID: 8270942869542521733}
     - target: {fileID: 3649050722857703644, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9b0ca205ff558bf4eabe42aa31f5b6d9, type: 2}
+      objectReference: {fileID: 9100000, guid: d97f786b9eafca04cb86c6252d16a607, type: 2}
     - target: {fileID: 3649050723600265515, guid: 1a341dbc02952a2459512eae3628cb08,
         type: 3}
       propertyPath: m_Name
