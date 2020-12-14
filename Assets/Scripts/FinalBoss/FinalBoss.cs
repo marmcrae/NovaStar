@@ -59,6 +59,11 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private GameObject _smoke2;
     [SerializeField] private GameObject _explosionPos;
 
+    [SerializeField] protected bool _beamHit;
+    [SerializeField] protected float _iFrameTime = 0.2f;
+    [SerializeField] protected float _beamDamage = 1.0f;
+    protected float _hitTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -227,12 +232,41 @@ public class FinalBoss : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Damage(1f);
+            if (other != null)
+            {
+                other.GetComponent<PlayerHealthAndDamage>().PlayerDamage();
+            }
         }
         if (other.CompareTag("Fireball"))
         {
             Damage(1f);
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Wave"))
+        {
+            Damage(1f);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        //Beam Collision
+        if (other.CompareTag("Beam"))
+        {
+            Debug.Log("Hit detected");
+            if (_beamHit != true)
+            {
+                Debug.Log("Damage Dealt");
+                Damage(_beamDamage);
+                _hitTime = Time.time;
+                _beamHit = true;
+                StartCoroutine(HitTimer());
+            }
+        }
+    }
+    IEnumerator HitTimer()
+    {
+        yield return new WaitForSeconds(_iFrameTime);
+        _beamHit = false;
     }
 
     private void Damage(float _damage)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8749789496689623928}
   m_Layer: 0
   m_Name: LaserOrb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserOrb2
       objectReference: {fileID: 0}
+    - target: {fileID: 939611514574070289, guid: e7bcbaf624526c243a6e5e85d1b11c3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4651846560143306584, guid: e7bcbaf624526c243a6e5e85d1b11c3d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e7bcbaf624526c243a6e5e85d1b11c3d, type: 3}
@@ -224,6 +229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserOrb1
+      objectReference: {fileID: 0}
+    - target: {fileID: 939611514574070289, guid: e7bcbaf624526c243a6e5e85d1b11c3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4651846560143306584, guid: e7bcbaf624526c243a6e5e85d1b11c3d, type: 3}
