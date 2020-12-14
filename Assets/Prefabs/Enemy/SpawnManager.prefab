@@ -135,10 +135,12 @@ MonoBehaviour:
       type: 3}
   - name: Wave 13
     enemy:
-    - {fileID: 7090471415415620663, guid: c90285444bab2684c88ce6fa8cdb0c62, type: 3}
-    count: 2
-    rate: 1
-    _waveAnim: {fileID: 0}
+    - {fileID: 1800837295739870105, guid: a2f2660a1946ad647b701ed9ab9581a2, type: 3}
+    - {fileID: 5925815399817429637, guid: 69ad86e43afd6e14caf1537e71648a57, type: 3}
+    count: 10
+    rate: 5
+    _waveAnim: {fileID: 549636615943164045, guid: 30c3b1d6ba6faff498b7110b3dd6c781,
+      type: 3}
   - name: Wave 14
     enemy:
     - {fileID: 2713658611427233250, guid: 64255af2415cc3748b24f10fab93c976, type: 3}
