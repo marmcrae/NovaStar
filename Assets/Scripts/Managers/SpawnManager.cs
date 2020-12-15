@@ -23,27 +23,38 @@ public class SpawnManager : MonoBehaviour
     public Wave[] waves;
     public Transform[] spawnPoints;
     public float timeBetweenWaves = 5f;
+
+    [SerializeField] private int nextWave = 0;
+    [SerializeField] private bool _checkpointReached = false;
     //Serialized Fields end 
 
-    [SerializeField]
-    private int nextWave = 0;
     private float waveCountdown;
     private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
-    [SerializeField]
-    private bool _checkpointReached = false;
     private bool _playerDied = false;
     private GameObject[] objectsToDestroy;
     private GameObject _player;
+    private WavePanelManager _wavePanelManager;
 
     void Start()
     {
         _player = GameObject.Find("Player");
+        _wavePanelManager = GameObject.Find("Wave_Panel").GetComponent<WavePanelManager>();
+
+        if (_player == null)
+        {
+            Debug.LogError("Cant find player for SpawnManager");
+        }
+        if (_wavePanelManager == null)
+        {
+            Debug.LogError("Cant find WavePanelManger ui component");
+        }
 
         if (spawnPoints.Length <= 0)
         {
             Debug.LogError("No SpawnPoints found");
         }
+
         waveCountdown = timeBetweenWaves;
     }
 
@@ -58,13 +69,20 @@ public class SpawnManager : MonoBehaviour
             _player.transform.position = new Vector3(-20,0,0);
         }
 
+        if (_playerDied)
+        {
+            _wavePanelManager.WaveIsDone();
+        }
+
         if (!_stopSpawning)
         {
             if (state == SpawnState.WAITING)
             {
+
                 if (!EnemyIsAlive())
                 {
                     WaveCompleted();
+                    _wavePanelManager.UpdateWave(nextWave);
                 }
                 else
                 {
@@ -91,7 +109,7 @@ public class SpawnManager : MonoBehaviour
     }
     void WaveCompleted()
     {
-        Debug.Log("Wave Completed" + nextWave);
+        Debug.Log("Wave Completed " + nextWave);
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
@@ -127,6 +145,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        _wavePanelManager.WaveIsDone();
         state = SpawnState.SPAWNING;
         SpawnWaveAnim(_wave);
 
