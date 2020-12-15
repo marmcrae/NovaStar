@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4628876687322519643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1207,7 +1207,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'JP Hayashi
 
-    Austin Mackrell'
+    Austin Mackrell
+
+    Al Heck'
 --- !u!1 &4628876687707033896
 GameObject:
   m_ObjectHideFlags: 0
@@ -7857,7 +7859,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4628876688466970859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000010343}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4628876687322519643}
@@ -7865,7 +7867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 458.92, y: 33}
+  m_AnchoredPosition: {x: 459, y: 0}
   m_SizeDelta: {x: 509.99176, y: 163.47668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4628876688466970852
@@ -8470,16 +8472,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Christian Aspacio
+  m_Text: 'Cristian Aspacio
 
     Mar McRae
 
-    Dylan Muruyama
+    Dylan Murayama
 
-    Christopher
-    Na
+    Christopher Na
 
-    Kurt Noe
+    Kurt
+    Noe
 
     Ryan Yamura'
 --- !u!1 &4628876688777744083
@@ -8508,7 +8510,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4628876688777744083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00077656}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0007502411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4628876687322519643}
@@ -8516,7 +8518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: 107.7}
+  m_AnchoredPosition: {x: 29.079985, y: 74.7}
   m_SizeDelta: {x: 651.0988, y: 73.210785}
   m_Pivot: {x: -0.14461482, y: 0.14967416}
 --- !u!222 &4628876688777744076
