@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        _sfxSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+        _bgmSource = GameObject.Find("BGM").GetComponent<AudioSource>();
     }
     #endregion
 

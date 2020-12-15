@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlayMusic(_menuMusic, 1f);
+        _brightness = GameObject.Find("BrightnessManager").transform.GetChild(0).GetChild(0).GetComponent<Image>();
         UpdateSliders();
     }
 
