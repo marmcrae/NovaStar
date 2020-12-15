@@ -17,7 +17,7 @@ public class Health_Bar_UI : MonoBehaviour
     private Text _healthText;
 
     private float _currentHealth;
-    private float _maxHealth = 1f;
+    private float _maxHealth = 6f;
 
     private PlayerHealthAndDamage _player;
     
@@ -47,17 +47,20 @@ public class Health_Bar_UI : MonoBehaviour
     {
 
         _currentHealth = _player.health;
-        float fillAmount = _currentHealth;
+        float fillAmount = _currentHealth / _maxHealth;
         _healthBackground.fillAmount = fillAmount;
         _healthText.text = "Health";
 
-        if (_currentHealth <= .5f)
+        if (_currentHealth <= 2f)
         {
             _healthText.color = Color.red;
+            _healthBackground.color = Color.red;
         }
         else
         {
             _healthText.color = Color.white;
+            _healthBackground.color = new Color32(204, 126, 14, 255);
+            Debug.Log(_healthBackground.color);
         }
 
     }

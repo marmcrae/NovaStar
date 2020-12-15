@@ -3,9 +3,9 @@
 public class PlayerHealthAndDamage : MonoBehaviour
 {
     [SerializeField]
-    public float health = 1;
+    public float health = 6;
     [SerializeField]
-    public float maximumHealth = 1;
+    public float maximumHealth = 6;
 
     [SerializeField]
     private GameObject _explosionAnim;
@@ -25,6 +25,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
         {
             Debug.LogError("Player Weapon is NULL");
         }
+
+        health = 6;
+        maximumHealth = 6;
     }
 
     // Update is called once per frame
@@ -36,15 +39,12 @@ public class PlayerHealthAndDamage : MonoBehaviour
 
     public void PlayerDamage()
     {
+        health -= 1;
 
         if (_playerWeapon._weaponPowerLevel > 0)
         {
-            _playerWeapon._weaponPowerLevel --;
+            _playerWeapon._weaponPowerLevel--;
             _playerWeapon.UpdateWeaponLevel();
-        }
-        else if (_playerWeapon._weaponPowerLevel == 0)
-        {
-            health -= .5f;
         }
 
         if (health <= 0)
