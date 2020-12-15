@@ -6,7 +6,7 @@ public class PlayerWeaponsFire : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject[] _weaponsPrefab;
+    public GameObject[] _weaponsPrefab;
 
     [SerializeField]
     private GameObject _chargeSprite;

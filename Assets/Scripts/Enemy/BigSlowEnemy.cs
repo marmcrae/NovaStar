@@ -19,6 +19,10 @@ public class BigSlowEnemy : EnemyAbstractClass
     [SerializeField]
     private bool _fireBreak;
 
+    private Animator _bigSlowAnim;
+
+    private float _randomPos;
+
 
 
     // Start is called before the first frame update
@@ -27,6 +31,19 @@ public class BigSlowEnemy : EnemyAbstractClass
         base.Start();
         _hp = 10f;
         Instantiate(_powerUpPrefab, transform.position, Quaternion.identity);
+
+        _bigSlowAnim = transform.GetComponent<Animator>();
+
+        if (_bigSlowAnim == null)
+        {
+            Debug.Log("Animator is NULL");
+        }
+        
+        PlayRandomAnimation();
+
+        _randomPos = Random.Range(-3, 3);
+
+        transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y + _randomPos, transform.parent.position.z);
     }    
 
     // Update is called once per frame
@@ -34,6 +51,12 @@ public class BigSlowEnemy : EnemyAbstractClass
     {
         base.Update();
         WeaponFire();
+    }
+
+    private void PlayRandomAnimation()
+    {
+        int random = Random.Range(1, 3);
+        _anim.SetInteger("RandomAnim", random );
     }
    
 

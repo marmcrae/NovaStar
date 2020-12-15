@@ -3,15 +3,17 @@
 public class PlayerHealthAndDamage : MonoBehaviour
 {
     [SerializeField]
-    public float health = 6;
+    public float health;
+    
     [SerializeField]
-    public float maximumHealth = 6;
+    public float maximumHealth;
 
     [SerializeField]
     private GameObject _explosionAnim;
 
     private PlayerWeaponsFire _playerWeapon;
     private SpawnManager _spawnManager;
+
     private void Start()
     {
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -26,16 +28,9 @@ public class PlayerHealthAndDamage : MonoBehaviour
             Debug.LogError("Player Weapon is NULL");
         }
 
-        health = 6;
-        maximumHealth = 6;
+        health = _playerWeapon._weaponsPrefab.Length;
+        maximumHealth = _playerWeapon._weaponsPrefab.Length;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 
     public void PlayerDamage()
     {

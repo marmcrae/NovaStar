@@ -60,7 +60,6 @@ public class Health_Bar_UI : MonoBehaviour
         {
             _healthText.color = Color.white;
             _healthBackground.color = new Color32(204, 126, 14, 255);
-            Debug.Log(_healthBackground.color);
         }
 
     }
