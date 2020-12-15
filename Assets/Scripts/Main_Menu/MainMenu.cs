@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _optionsMenu;
     [SerializeField]
+    private GameObject _creditsScreen;
+    [SerializeField]
     private AudioMixer _audioMixer;
     [SerializeField]
     private AudioClip _menuMusic;
@@ -25,6 +27,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlayMusic(_menuMusic, 1f);
+        _brightness = GameObject.Find("BrightnessManager").transform.GetChild(0).GetChild(0).GetComponent<Image>();
         UpdateSliders();
     }
 
@@ -43,11 +46,22 @@ public class MainMenu : MonoBehaviour
     public void OptionsMenuOn()
     {
         _optionsMenu.SetActive(true);
+       
     }
 
     public void OptionsMenuOff()
     {
         _optionsMenu.SetActive(false);
+    }
+
+    public void CreditsScreenOn()
+    {
+        _creditsScreen.SetActive(true);
+    }
+
+    public void CreditsScreenOff()
+    {
+        _creditsScreen.SetActive(false);
     }
 
     public void SetVolume(float volume)

@@ -17,9 +17,11 @@ public class AudioManager : MonoBehaviour
             return _instance;
         }
     }
-    private void Start()
+    private void Awake()
     {
         _instance = this;
+        _sfxSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+        _bgmSource = GameObject.Find("BGM").GetComponent<AudioSource>();
     }
     #endregion
 

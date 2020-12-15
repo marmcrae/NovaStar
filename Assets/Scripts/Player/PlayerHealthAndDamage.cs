@@ -36,13 +36,13 @@ public class PlayerHealthAndDamage : MonoBehaviour
 
     public void PlayerDamage()
     {
-        
+
         if (_playerWeapon._weaponPowerLevel > 0)
         {
-            _playerWeapon._weaponPowerLevel--;
+            _playerWeapon._weaponPowerLevel --;
             _playerWeapon.UpdateWeaponLevel();
-
-        }else if(_playerWeapon._weaponPowerLevel == 0)
+        }
+        else if (_playerWeapon._weaponPowerLevel == 0)
         {
             health -= .5f;
         }
@@ -51,16 +51,6 @@ public class PlayerHealthAndDamage : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             Instantiate(_explosionAnim, transform.position, Quaternion.identity);           
-        }
-    }
-
-    //for testing
-    public void PlayerDamageTest()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PlayerDamage();
-            //Debug.Log("Health= " + health);
         }
     }
 

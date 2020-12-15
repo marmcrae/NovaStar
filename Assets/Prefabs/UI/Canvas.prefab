@@ -3422,6 +3422,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 205
       objectReference: {fileID: 0}
+    - target: {fileID: 2718729729445501008, guid: 8ec5ec1b2deebdd47ab1909f76178f4f,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718729729445501008, guid: 8ec5ec1b2deebdd47ab1909f76178f4f,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8395133054859678316, guid: 8ec5ec1b2deebdd47ab1909f76178f4f,
         type: 3}
       propertyPath: m_Name
