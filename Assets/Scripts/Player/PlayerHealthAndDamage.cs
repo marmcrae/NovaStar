@@ -38,14 +38,19 @@ public class PlayerHealthAndDamage : MonoBehaviour
 
     public void PlayerDamage()
     {
-        health -= .5f;
-        _playerWeapon._weaponPowerLevel = 0;
-        _playerWeapon.UpdateWeaponLevel();
+        if (_playerWeapon._weaponPowerLevel > 0)
+        {
+            _playerWeapon._weaponPowerLevel --;
+            _playerWeapon.UpdateWeaponLevel();
+        }
+        else if (_playerWeapon._weaponPowerLevel == 0)
+        {
+            health -= .5f;
+        }
 
         if (health <= 0)
         {
             this.gameObject.SetActive(false);
-            health = 1f;
             Instantiate(_explosionAnim, transform.position, Quaternion.identity);           
         }
     }
